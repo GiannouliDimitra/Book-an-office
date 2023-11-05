@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-let Office_schema = new mongoose.Schema({
+const officeSchema = new mongoose.Schema({
     location: Array,
     name: String,
     photo: String,
     price: Number,
-    isAvailable: Boolean,
+    isAvailable: { type:Boolean, default:true },
 });
 
-let Office = mongoose.model("Office", Office_schema);
+const Office = mongoose.model("Office", officeSchema);
 
 module.exports = Office;

@@ -1,0 +1,22 @@
+
+* {
+box-sizing: border-box;
+margin:0;
+padding:0;
+}
+.mainContainer {
+    height: 100vh;
+}
+.leaflet-container {
+    height:100vh;
+}
+.cluster-icon{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color:red;
+    transform: translate(-20%, -20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

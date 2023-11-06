@@ -1,0 +1,14 @@
+.ItemContainer{
+    border: 1px solid black;
+    width:15vw;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 8px;
+}
+
+.itemImage{
+    width:200px;
+    height:200px;
+    border-radius: 4px;
+}

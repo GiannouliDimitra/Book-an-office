@@ -50,8 +50,8 @@ const Map = () => {
     chunkedLoading
     iconCreateFunction={createClusterIcon}
     >
-         {offices.map ((office) => (
-    <Marker position = { office.location } icon = {customIcon}>
+         {offices.map ((office,i) => (
+    <Marker key = {i} position = { office.location } icon = {customIcon}>
 <Popup>{ office.name } <br></br> { office.prise }</Popup>
     </Marker>
    ))}

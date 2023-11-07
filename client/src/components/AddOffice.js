@@ -2,8 +2,37 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import 'material-icons/iconfont/material-icons.css';
+import {
+  setKey,
+  setDefaults,
+  setLanguage,
+  setRegion,
+  fromAddress,
+  fromLatLng,
+  fromPlaceId,
+  setLocationType,
+  geocode,
+  RequestType,
+} from "react-geocode";
+
 
 function AddOffice ( { getAllOffices, office, setOffice }) {
+
+
+// Set Google Maps Geocoding API key for quota management
+  setKey("AIzaSyBb_zLTWnICoLTDa-bnlYDh5nW5rKky7bc");
+  setLanguage("en"); // Default language for responses.
+
+
+  // Get latitude & longitude from address.
+  geocode(RequestType.ADDRESS, "Athens")
+  .then(({ results }) => {
+    const { lat, lng } = results[0].geometry.location;
+    console.log(lat, lng);
+    console.log (results)
+  })
+  .catch(console.error);
+
 
 
   function handleInputChange(e, fieldName) {
@@ -39,7 +68,7 @@ function getLocation(){
         currentLat = position.coords.latitude.toFixed(2);
         currentLong = position.coords.longitude.toFixed(2);
        console.log (currentLat, currentLong)
-       setOffice({...office, location: office.location [currentLat, currentLong] });
+       setOffice({...office, location: [currentLat, currentLong] });
         });
       } else {
         alert = "Geolocation is not supported by this browser.";

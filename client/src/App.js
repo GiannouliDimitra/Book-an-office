@@ -15,10 +15,11 @@ function App() {
   const [offices, setOffices] = useState([]);
   const [office, setOffice] = useState ({
     location: [],
-    name: "",
+    place: "",
     photo: "",
     price: null,
     isAvailable: true,
+    availableDates: [],
   })
 
   function getAllOffices(){
@@ -44,13 +45,13 @@ function App() {
       office = {office}
       offices = {offices}
       getAllOffices = {getAllOffices}
-     />
+     /> 
      <AddOffice
      office ={office}
      setOffice={setOffice}
      getAllOffices = {getAllOffices}
      />
-     <Map/>
+  {/*    <Map/> */}
     </div>
   );
 }

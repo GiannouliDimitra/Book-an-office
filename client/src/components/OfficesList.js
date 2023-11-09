@@ -11,6 +11,7 @@ function OfficesList ({ office, offices, getAllOffices }) {
               key= {i}>
                 <OfficeItem
                 office = {office}
+                getAllOffices ={getAllOffices}
                 />
                 </div>  
             ))}

@@ -15,7 +15,7 @@ import {
 } from "react-geocode";
 import 'material-icons/iconfont/material-icons.css';
 import Calendar from "./Calendar";
-
+import ("./addOffice.css");
 
 function AddOffice ( { getAllOffices, office, setOffice }) {
 //states

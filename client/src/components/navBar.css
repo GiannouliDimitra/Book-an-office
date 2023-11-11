@@ -1,0 +1,9 @@
+.navBarContainer{
+display: flex;
+justify-content: space-between;
+font-size: 16px;
+}
+.navItem{
+margin:4%;
+padding:2%
+}

@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Map from "./components/Map";
 import OfficesList from './components/OfficesList';
 import AddOffice from './components/AddOffice';
-
+import NavBar from './components/NavBar';
 
 function App() {
 
@@ -39,20 +39,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-     <h1>hi</h1>
-     <OfficesList
-      office = {office}
-      offices = {offices}
-      getAllOffices = {getAllOffices}
-     /> 
-     <AddOffice
-     office ={office}
-     setOffice={setOffice}
-     getAllOffices = {getAllOffices}
-     />
-  {/*    <Map/> */}
-    </div>
+    <BrowserRouter>
+    <NavBar />
+    <Routes>
+    <Route
+          path="/addForm"
+          element={<AddOffice
+            office ={office}
+            setOffice={setOffice}
+            getAllOffices = {getAllOffices}
+            />}
+        />
+        <Route
+          path="/"
+          element={ <>
+        <OfficesList
+            office = {office}
+            offices = {offices}
+            getAllOffices = {getAllOffices}
+           /> {/* <Map/> */}   </>}
+        />
+      {/*   <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} /> */}
+    </Routes>
+    </BrowserRouter>
+
   );
 }
 

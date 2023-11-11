@@ -1,0 +1,11 @@
+.inputField{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+input, button{
+    height:150%;
+    margin:2%;
+}

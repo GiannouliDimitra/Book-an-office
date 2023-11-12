@@ -29,17 +29,19 @@ function OfficeItem ( { office , getAllOffices}) {
       setIsEdit(true);
       };
 
+
     return ( 
       <div>
         <div className="ItemContainer">
-          <div>
-            <img className="itemImage" src={office.photo}/>
+          <img className="itemImage item" src={office.photo}/>
+          <h3 className="item">{office.place}</h3>
+          <span className="item">{office.location}</span>
+          <h4 className="item">{office.price} euro/day</h4>
+          <div className="itemButtons">
+          <button className="item" onClick={() =>deleteOffice(office._id)}>DELETE</button>
+          <button className="item" onClick={() =>editOffice(office._id)}>UPDATE</button>
           </div>
-          <h3>{office.place}</h3>
-          <span>{office.location}</span>
-          <h4>{office.price} euro/day</h4>
-          <button onClick={() =>deleteOffice(office._id)}>DELETE</button>
-          <button onClick={() =>editOffice(office._id)}>UPDATE</button>
+          
         </div>
         {isEdit && <Edit
         office = {office}

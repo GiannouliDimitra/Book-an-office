@@ -1,6 +1,7 @@
 //import the depedencies
 import axios from "axios";
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   setKey,
   setDefaults,
@@ -20,6 +21,8 @@ import ("./addOffice.css");
 function AddOffice ( { getAllOffices, office, setOffice }) {
 //states
 const [availability, setAvailability] = useState([]);
+//variables
+const navigate = useNavigate();
 
 // Set Google Maps Geocoding API key for quota management
   setKey("AIzaSyBb_zLTWnICoLTDa-bnlYDh5nW5rKky7bc");
@@ -61,7 +64,10 @@ const [availability, setAvailability] = useState([]);
             alert("The office " + res.data.createdOffice.place + " is added.")
            
           })
-          .then(() => getAllOffices())
+          .then(() => {
+            getAllOffices()
+            navigate('/')
+          })
           .catch((error) => console.log(error));
     } catch (error) {
       console.log(error);

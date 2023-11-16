@@ -1,7 +1,7 @@
 const express = require ("express");
 const connection = require ("./connection");
 const cors = require ("cors");
-/* const user_routers = require("./routers/user_routers");*/
+const userRouters = require("./routers/userRouter");
 const officeRoutes = require("./routers/officeRouter"); 
 
 
@@ -14,7 +14,7 @@ app.use(cors());
 
 // Use the routers
 app.use ("/", officeRoutes);
-/* app.use("/", user_routers); */
+app.use("/", userRouters);
 
 
 

@@ -6,8 +6,11 @@ function NavBar() {
 
     return ( 
         <nav className='navBarContainer'>
-            <div className ="navItem"><Link to='/'>Home</Link></div>
+            <div className ="navItem"><Link to='/home'>Home</Link></div>
+            <div className ="navItem"><Link to='/'>About</Link></div>
+            <div className ="navItem"><Link to='/login'>Login</Link></div>
             <div className ="navItem"><Link to='/addForm'>Add an Office</Link></div>
+            <div className ="navItem"><Link to='/'>Offices</Link></div>
         </nav>      
      );
 }

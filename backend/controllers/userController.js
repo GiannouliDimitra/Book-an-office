@@ -73,6 +73,11 @@ const login = async (req, res) => {
     }
 };
 
+//test the token
+const testToken = async (req, res) => {
+    let { email } = req.body;
+    res.send(`Welcome ${email}`);
+    console.log (req.user.id)
+};
 
-
-module.exports = { signUp, login/* , testToken */ };
+module.exports = { signUp, login, testToken };

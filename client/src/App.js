@@ -7,6 +7,9 @@ import Map from "./components/Map";
 import OfficesList from './components/OfficesList';
 import AddOffice from './components/AddOffice';
 import NavBar from './components/NavBar';
+import SignUp from './components/auth/SignUp';
+import Login from './components/auth/Login';
+import Home from './components/Home';
 
 function App() {
 
@@ -59,9 +62,9 @@ function App() {
             getAllOffices = {getAllOffices}
            /> {/* <Map/> */}   </>}
         />
-      {/*   <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
     </Routes>
     </BrowserRouter>
 

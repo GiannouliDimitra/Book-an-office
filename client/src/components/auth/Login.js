@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login () {
-
+//states && variables
 let [email, setEmail] = useState("");
 let [password, setPassword] = useState("");
-
-let navigate = useNavigate();
+let decoded;
+let token;
+const navigate = useNavigate();
 
 async function handleLogin(e) {
     try {
@@ -20,17 +21,17 @@ async function handleLogin(e) {
           email,
           password,
       });
+      token = res.data.token;
+      console.log (token)
 
       // Save the token in the browser
       if(res.status === 200) {
         alert(res.data.msg);
-        console.log (res.data)
-        let decoded = jwtDecode(res.data.token);
-        console.log (decoded)
-        localStorage.setItem("token", res.data.token);
+        decoded = jwtDecode(token);
+        console.log (decoded, token)
+        localStorage.setItem("token", token);
         navigate("/");
       }
-      
     } catch (error) {
        alert("Can not login, please check your email or password.");
     }

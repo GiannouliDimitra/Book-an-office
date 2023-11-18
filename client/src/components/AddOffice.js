@@ -102,14 +102,15 @@ function getLocation(){
     }
   return ( 
     <div className ="inputField">
-      <div>
-      <button onClick={getLocation}>Get your location</button>
-      </div>
+     
       <input
         type="text"
         placeholder="Add a place..."
         onChange={(e) => handleInputPlaceChange(e)}
       />
+       <div>
+      <button onClick={getLocation}>Get your location</button>
+      </div>
         <input
         type="text"
         placeholder="Add a photo..."

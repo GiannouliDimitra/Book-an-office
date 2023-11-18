@@ -14,7 +14,7 @@ const signUp = async (req, res) => {
         let found = await User.findOne({ email });
         if (found) {
             return res.send({
-                msg: "This email is already exist, login or signUp with a new email.", found});
+                msg: "This email already exists, login or signUp with a new email.", found});
         }
         let hash_password = await bcrypt.hash(password, 10);
         await User.create({ name, email, password: hash_password });
@@ -24,7 +24,7 @@ const signUp = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).send({
-            msg: "internal server error, please try again later." });
+            msg: "Internal server error, please try again later." });
     }
 };
 

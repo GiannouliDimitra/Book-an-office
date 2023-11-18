@@ -54,7 +54,7 @@ function App() {
             />}
         />
         <Route
-          path="/"
+          path="/offices"
           element={ <>
         <OfficesList
             office = {office}
@@ -62,12 +62,11 @@ function App() {
             getAllOffices = {getAllOffices}
            /> {/* <Map/> */}   </>}
         />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
     </Routes>
     </BrowserRouter>
-
   );
 }
 

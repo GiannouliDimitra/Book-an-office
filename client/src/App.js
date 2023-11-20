@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import Home from './components/Home';
+import Profil from './components/Profil';
 
 function App() {
 
@@ -21,9 +22,10 @@ function App() {
     place: "",
     photo: "",
     price: null,
-    isAvailable: true,
     availableDates: [],
-  })
+    reservationDates: [],
+  });
+ 
 
   function getAllOffices(){
     try {
@@ -59,12 +61,14 @@ function App() {
         <OfficesList
             office = {office}
             offices = {offices}
+            setOffice={setOffice}
             getAllOffices = {getAllOffices}
            /> {/* <Map/> */}   </>}
         />
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profil" element={<Profil />} />
     </Routes>
     </BrowserRouter>
   );

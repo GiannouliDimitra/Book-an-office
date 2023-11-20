@@ -19,9 +19,9 @@ import Calendar from "./Calendar";
 import ("./addOffice.css");
 
 function AddOffice ( { getAllOffices, office, setOffice }) {
-//states
-const [availability, setAvailability] = useState([]);
+
 //variables
+let token = localStorage.getItem("token");
 const navigate = useNavigate();
 
 // Set Google Maps Geocoding API key for quota management
@@ -59,14 +59,14 @@ const navigate = useNavigate();
   const addOffice = () => {
     try {
       axios
-          .post("http://localhost:8000/create", office)
+          .post("http://localhost:8000/create", office, { headers:{ Authorization: `Bearer ${token}`} })
           .then((res) => {
             alert("The office " + res.data.createdOffice.place + " is added.")
            
           })
           .then(() => {
             getAllOffices()
-            navigate('/')
+            navigate('/offices')
           })
           .catch((error) => console.log(error));
     } catch (error) {
@@ -97,7 +97,8 @@ function getLocation(){
       console.log(days)
       for(let i=0; i<days.length; i++) {
         setOffice({...office, availableDates:days})
-        console.log("from addform" , days)
+        let date = new Date (office.availableDates[i])
+        console.log("the date", date)
       }
     }
   return ( 
@@ -122,9 +123,10 @@ function getLocation(){
         onChange={(e) => handleInputChange(e, "price")}
       />
     <Calendar
-    findAvailabledays ={findAvailabledays} />
+    findAvailabledays ={findAvailabledays} 
+    />
       <button type="submit" className="addBut" onClick={addOffice}>
-      <i className="material-icons addIcon">add_box</i>
+    add
       </button>
     </div>
   

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import OfficeItem from "./OfficeItem";
 import "./officeList.css";
 
-function OfficesList ({ office, offices, getAllOffices }) {
+function OfficesList ({ office, offices, setOffice, getAllOffices }) {
     //states
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -26,7 +26,9 @@ function OfficesList ({ office, offices, getAllOffices }) {
               key= {i}>
                 <OfficeItem
                 office = {office}
-                getAllOffices ={getAllOffices}
+                offices = {offices}
+                setOffice={setOffice}
+                getAllOffices = {getAllOffices}
                 />
                 </div>  
             ))}

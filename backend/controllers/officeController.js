@@ -5,7 +5,7 @@ const Office = require ("../models/officeModel");
 //get
 const  findOffices = async (req, res) => {
     try {
-        const allOffices = await Office.find();
+        const allOffices = await Office.find().populate("owner");
         res.status(200).send(allOffices);
     } catch (error) {
         console.log(error);
@@ -16,9 +16,24 @@ const  findOffices = async (req, res) => {
 //post
 const addOffice = async (req,res) => {
     try {
-        let office = req.body;
-        console.log(office);
-        const createdOffice = await Office.create(office);
+       let owner = req.user.id;
+        let { 
+            location, 
+            place, 
+            photo, 
+            price, 
+            isAvailable, 
+            availableDates} = req.body;
+        let newOffice = {
+            location, 
+            place, 
+            photo, 
+            price, 
+            isAvailable, 
+            availableDates,
+            owner,
+        }
+        let createdOffice = await Office.create(newOffice);
         res.status(200).send({ msg: "The office is added", createdOffice });
     } catch (error) {
         console.log(error); 

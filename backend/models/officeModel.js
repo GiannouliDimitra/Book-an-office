@@ -5,8 +5,9 @@ const officeSchema = new mongoose.Schema({
     place: String,
     photo: String,
     price: Number,
-    isAvailable: { type:Boolean, default:true },
-    availableDates: { type:Array },
+    availableDates: Array,
+    reservationDates: Array,
+    owner: { type:mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
 const Office = mongoose.model("Office", officeSchema);

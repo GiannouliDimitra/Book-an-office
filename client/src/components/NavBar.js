@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import {BrowserRouter, Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode"; 
+import Logo from'../photos/markerIcon.png';
 import ("./navBar.css")
 
 
@@ -27,29 +28,29 @@ function NavBar() {
     return ( 
        <>
         {!token? (
-                <nav className='navBarContainer'>
-            <div>
-                <div>
-                    <h2>Book an Office</h2>
+                <nav>
+            <div className='navBarContainer'>
+                <div className ="navLogoItem">
+                    <img className="imageLogoNavbar" src={Logo}></img>
                 </div>
-            <div className ="navItem"><Link to='/'>Home</Link></div>
-            <div className ="navItem"><Link to='/'>About</Link></div>
-            <div className ="navItem"><Link to='/login'>Login</Link></div>
-            <div className ="navItem"><Link to='/signup'>SignUp</Link></div>
+            <div className ="navItem"><Link className ="navText" to='/'>Home</Link></div>
+            <div className ="navItem"><Link className ="navText" to='/'>About</Link></div>
+            <div className ="navItem"><Link className ="navText" to='/login'>Login</Link></div>
+            <div className ="navItem"><Link className ="navText" to='/signup'>SignUp</Link></div>
             </div>
             </nav>
             ) : (
-                <nav className='navBarContainer'>
-                <div>
-                    <div>
-                        <h2>Book an Office</h2>
+                <nav>
+                <div className='navBarContainer'>
+                    <div className='navLogoItem'>
+                       <img className="imageLogoNavbar" src={Logo}></img>
                     </div>
-                <div className ="navItem"><Link to='/profil'>Profil of {decoded.name}</Link></div>
-                <div className ="navItem"><Link to='/'>Home</Link></div>
-                <div className ="navItem"><Link to='/'>About</Link></div>
-                <div className ="navItem"><Link to='/addForm'>Add an Office</Link></div>
-                <div className ="navItem"><Link to='/offices'>Offices</Link></div>
-                <div className ="navItem"><Link onClick={handleLogout} to='/login'>Logout</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/profil'>Profil of {decoded.name}</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/'>Home</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/'>About</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/addForm'>Add an Office</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/offices'>Offices</Link></div>
+                <div className ="navItem"><Link className ="navText" onClick={handleLogout} to='/login'>Logout</Link></div>
                 </div>
                 </nav>  
             )

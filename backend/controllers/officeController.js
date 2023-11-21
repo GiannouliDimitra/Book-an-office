@@ -13,6 +13,7 @@ const  findOffices = async (req, res) => {
     }
 };
 
+
 //post
 const addOffice = async (req,res) => {
     try {
@@ -21,15 +22,13 @@ const addOffice = async (req,res) => {
             location, 
             place, 
             photo, 
-            price, 
-            isAvailable, 
+            price,  
             availableDates} = req.body;
         let newOffice = {
             location, 
             place, 
             photo, 
-            price, 
-            isAvailable, 
+            price,
             availableDates,
             owner,
         }

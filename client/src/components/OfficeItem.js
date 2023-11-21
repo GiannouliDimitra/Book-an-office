@@ -14,7 +14,13 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   const [bookPressed, setBookPressed] = useState (false);
   const [ownerOfficesIds, setOwnerOfficesIds] = useState ([]);
   const [values, setValues] = useState([]);
-  const [reservation, setReservation] = useState ([]);
+  const [reservation, setReservation] = useState ({
+    dates: [],
+    officePlace:"",
+    userId: "",
+    ownerId: "",
+    officeId: "",
+  });
   //variables for the token
   let token = localStorage.getItem("token");
   let decoded = jwtDecode(token);
@@ -25,7 +31,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
     .filter( (office) => office.owner._id === decoded.id)
     .map( (office) => office._id);
     setOwnerOfficesIds(ownerOfficesIds);
-   /*  console.log ("filter" , ownerOfficesIds); */
+  
   }
 
   useEffect(( )=> {filter()} , [decoded.id]);
@@ -49,26 +55,22 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   };
 
   function findAvailabledays(days) {
-    let pickedDate = office.availableDates.filter((date) => !days.includes(date))
-    console.log("you choose", office.availableDates, days, pickedDate)
-    /* for(let i=0; i<days.length; i++) { */
-      setOffice({...office, availableDates:days})
-   /*  } */
+   let pickedDate = reservation.dates.filter((date) => !days.includes(date))
+    console.log("you choose", reservation.dates, days, pickedDate)
+     for(let i=0; i<days.length; i++) { 
+      setOffice({...reservation, dates:days}) 
+  
+    }
   }
 
   async function handleBookPressed(id) {
     setBookPressed(true);
   };
 
-/*   function handleCalendarChange(e) {
-    setValues(e);
-    console.log(e)
-    findAvailabledays(e);
-  }; */
 
   function handleBookInputChange(e) {
     setValues(e);
-    console.log(e)
+    console.log("from book input" ,e)
     findAvailabledays(e);
     setReservation({
       ...reservation,
@@ -135,7 +137,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
             <DatePicker 
               multiple
               value={office.availableDates} 
-              onChange={ (e) => handleBookInputChange(e)}
+              onChange={(e) => handleBookInputChange(e)}
             />
             <button className="item" onClick={addReservation}>Book the office</button>
              <button className="item" onClick={() => setBookPressed(false)}>Cancel</button>

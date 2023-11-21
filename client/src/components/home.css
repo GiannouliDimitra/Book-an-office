@@ -1,5 +1,21 @@
-.mainImage{
-    width:80vw;
-    height:80vh;
-    transform: translate(200px);
+.homeMainContainer{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../photos/homePic.jpg");
+    background-size: cover;
+    border: black solid 1px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleContainer{
+border: black solid 5px;
+padding: 7% 14%;
+background-color: rgba(248,248,255,0.8);
+border-radius: 8px;
+}
+.homeTitle{
+font-size: 30px;
+font-family: Helvetica;
 }

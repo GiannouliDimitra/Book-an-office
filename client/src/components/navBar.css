@@ -1,10 +1,28 @@
 .navBarContainer{
 display: flex;
-justify-content: space-between;
+justify-content: space-around;
+align-items: center;
 font-size: 16px;
-border: 1px solid black;
+border: 6px solid black;
 }
 .navItem{
-margin:2%;
-padding:1%
+margin:1%;
+padding:1%;
+}
+.navItem:hover{
+background-color: #D3D3D3;
+border: 3px solid black; 
+border-radius: 8px;
+}
+.navText{
+    font-size: 20px;
+    border-radius: 18px;
+    font-family: Helvetica;
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+.imageLogoNavbar{
+    width:50px;
+
 }

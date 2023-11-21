@@ -11,6 +11,7 @@ import SignUp from './components/auth/SignUp';
 import Login from './components/auth/Login';
 import Home from './components/Home';
 import Profil from './components/Profil';
+import ("./app.css");
 
 function App() {
 
@@ -68,7 +69,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profil" element={<Profil />} />
+        <Route path="/profil" element={<Profil 
+         offices = {offices}/>} />
     </Routes>
     </BrowserRouter>
   );

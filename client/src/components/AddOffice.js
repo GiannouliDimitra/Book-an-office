@@ -62,7 +62,6 @@ const navigate = useNavigate();
           .post("http://localhost:8000/create", office, { headers:{ Authorization: `Bearer ${token}`} })
           .then((res) => {
             alert("The office " + res.data.createdOffice.place + " is added.")
-           
           })
           .then(() => {
             getAllOffices()

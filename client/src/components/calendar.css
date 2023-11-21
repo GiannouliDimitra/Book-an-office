@@ -1,0 +1,12 @@
+.custom-calendar{
+    background: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 3px 10px;
+    transform: translateX(150px);
+}
+.custom-input{
+    padding: 15px; 
+    border-radius: 6px; 
+}

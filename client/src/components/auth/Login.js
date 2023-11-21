@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import "./login.css"
 
 
 function Login () {
@@ -39,28 +40,33 @@ async function handleLogin(e) {
 
 
     return ( 
-        <div>
-        <h1>Login Form</h1>
+      <>
+        <div className='loginMainContainer'>
         <form className='loginForm' onSubmit={handleLogin}>
-             <label htmlFor='email'> Email:</label>
+          <h1 className='loginText'>Login</h1>
+             <label className='loginLabel' htmlFor='email'> Email:</label>
             <input
+            className='loginInput'
             id='email'
             type='text'
             placeholder='Add your email..'
             value = {email}
             onChange = {(e) => setEmail(e.target.value)}
             />
-             <label htmlFor='password'> Password:</label>
+             <label className='loginLabel' htmlFor='password'> Password:</label>
             <input
+            className='loginInput'
             id='password'
             type='password'
             placeholder='Add your password..'
             value = {password}
             onChange = {(e) => setPassword(e.target.value)}
             />
-            <button type='submit'>Login</button>
+            <button className='loginBut' type='submit'>Login</button>
         </form>
     </div>
+      <Footer/>
+      </>
      );
 }
 

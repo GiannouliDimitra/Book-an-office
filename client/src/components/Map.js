@@ -5,27 +5,10 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import { Icon, divIcon } from "leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 
-const Map = () => {
+const Map = ( { offices }) => {
 
     const position = [37.9, 23.7]
 
-    const offices = [
-        {
-            location: [37.91,23.71],
-            name: "Office1",
-            prise:10,
-        },
-        {
-            location: [37.93,23.72],
-            name: "Office2",
-            prise:12,
-        },
-        {
-            location: [37.89,23.69],
-            name: "Office3",
-            prise:15,
-        }
-    ]
 //icon creation
     const customIcon = new Icon ({
         iconUrl: require ("../photos/markerIcon.png"),

@@ -2,10 +2,10 @@
     font-family: Helvetica;
 }
 
-.addFormMainContainer{
+.signUpMainContainer{
     width: 100vw;
     height: 100vh;
-    background-image: url("../photos/homePic.jpg");
+    background-image: url("./authPhotos/homePic.jpg");
     background-size: cover;
     border: black solid 1px;
     height: 80vh;
@@ -13,55 +13,37 @@
     justify-content: center;
     align-items: center;
 }
-.inputField{
+.signUpForm{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55vw;
-    height: 65vh;
+    width: 50vw;
+    height: 52vh;
     border: black solid 5px;
     padding: 7% 14%;
     background-color: rgba(248,248,255,0.8);
     border-radius: 8px;
 }
-.addFormText{
+.signUpText{
     font-size: 30px;
     margin: 10px;
     font-weight: bolder;
 }
-.addFormInput,.addBut{
+.signUpLabel,loginInput{
 margin: 4%;
 }
-.addFormInput{
+.signUpInput{
 border: 1px solid black;
 border-radius: 6px;
 width:100%;
 padding: 15px;
 }
-.placeInput{
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-}
-.placeFormInput{
-    border: none;
-}
-.placeFormInput:focus,
-textarea:focus,
-select:focus,
-a:focus {
-  outline: none;
-}
-.addBut{
-padding: 2% 5%;
+.signUpBut{
+padding: 5% 10%;
 font-weight: bolder;
 border-radius: 12px;
 }
-.addBut:hover{
+.signUpBut:hover{
     background-color: chartreuse;
-}
-.geolocationBut {
-    background: white;
-    border: none;
 }

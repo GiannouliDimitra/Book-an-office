@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DatePicker from "react-multi-date-picker";
-
+import ("./calendar.css")
 export default function Calendar( { findAvailabledays }) {
 
   const today = new Date()
@@ -16,6 +16,9 @@ export default function Calendar( { findAvailabledays }) {
   
   return (
     <DatePicker 
+      placeholder="Add the date"
+      className="custom-calendar"
+      inputClass="custom-input"
       multiple
       value={values} 
       onChange={ (e) => handleChange(e)}

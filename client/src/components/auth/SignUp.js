@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./signUp.css"
 
 function SignUp () {
     //states
@@ -20,19 +21,21 @@ function SignUp () {
     }
 
     return ( 
-        <div>
-            <h1>SignUp Form</h1>
-            <form className='loginForm' onSubmit={handleSignUp}>
-                <label htmlFor='name'> Name:</label>
+        <div className='signUpMainContainer'>
+            <form className='signUpForm' onSubmit={handleSignUp}>
+            <h1 className='signUpText'>SignUp Form</h1>
+                <label className='signUpLabel' htmlFor='name'> Name:</label>
                 <input
+                className='signUpInput'
                 id='name'
                 type='text'
                 placeholder='Add your name..'
                 value = {name}
                 onChange = {(e) => setName(e.target.value)}
                 />
-                 <label htmlFor='email'> Email:</label>
+                 <label className='signUpLabel' htmlFor='email'> Email:</label>
                 <input
+                className='signUpInput'
                 id='email'
                 type='text'
                 placeholder='Add your email..'
@@ -41,13 +44,14 @@ function SignUp () {
                 />
                  <label htmlFor='password'> Password:</label>
                 <input
+                className='signUpInput'
                 id='password'
                 type='password'
                 placeholder='Add your password..'
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
                 />
-                <button type='submit'>SignUp</button>
+                <button className='signUpBut' type='submit'>SignUp</button>
             </form>
         </div>
      );

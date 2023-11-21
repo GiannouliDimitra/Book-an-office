@@ -58,13 +58,14 @@ function App() {
         />
         <Route
           path="/offices"
-          element={ <>
+          element={ 
         <OfficesList
             office = {office}
             offices = {offices}
             setOffice={setOffice}
             getAllOffices = {getAllOffices}
-           /> {/* <Map/> */}   </>}
+           /> 
+          }
         />
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />

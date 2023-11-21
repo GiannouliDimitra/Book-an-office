@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import OfficeItem from "./OfficeItem";
+import Map from "./Map";
 import "./officeList.css";
 
 function OfficesList ({ office, offices, setOffice, getAllOffices }) {
@@ -11,7 +12,7 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
       });
 
     return ( 
-        <div>
+      <div>
         <input
         id="searchInput"
           type="text"
@@ -19,8 +20,10 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-       <div
-        className="listMainContainer">
+        <div>
+      <div className='renderItemsContainer'>
+         <div
+        className='officeRenderItem'>
             {filteredOffices.map ((office,i) => (
               <div
               key= {i}>
@@ -32,8 +35,16 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
                 />
                 </div>  
             ))}
-        </div>    
+        </div> 
+        <div className='officeRenderItem'>
+           <Map 
+                offices = {offices}/>
         </div>
+      </div>
+      
+        </div>
+      </div>
+        
      );
 }
 

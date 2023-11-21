@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from "./Footer";
 import {
   setKey,
   setDefaults,
@@ -31,16 +32,15 @@ const navigate = useNavigate();
 
   // Get latitude & longitude from address.
   function getLocationByCity (city) {
-    console.log("this is the city" , city)
-     geocode(RequestType.ADDRESS, city) //here is the problem
+    console.log("this is the city" , city.target.value)
+    geocode(RequestType.ADDRESS, city.target.value)
     .then(({ results }) => {
       const { lat, lng } = results[0].geometry.location;
-      console.log(lat, lng);
-      console.log (results)
+      setOffice({...office, location: [lat, lng ] })
+      console.log(lat, lng, office.location);
     })
-  /*   .then(setOffice({...office, location: [lat, lng] })) */
-  .catch(console.error);
-  }
+    .catch(console.error);
+}
  
 //handleInputs
   function handleInputChange(e, fieldName) {
@@ -52,7 +52,7 @@ const navigate = useNavigate();
 
   function handleInputPlaceChange(e) {
     handleInputChange(e, "place");
-   /*  getLocationByCity(e) */
+    getLocationByCity(e)
   };
 
 //axios post
@@ -101,34 +101,46 @@ function getLocation(){
       }
     }
   return ( 
-    <div className ="inputField">
-     
-      <input
-        type="text"
-        placeholder="Add a place..."
-        onChange={(e) => handleInputPlaceChange(e)}
-      />
-       <div>
-      <button onClick={getLocation}>Get your location</button>
-      </div>
-        <input
-        type="text"
-        placeholder="Add a photo..."
-        onChange={(e) => handleInputChange(e, "photo")}
-      />
-        <input
-        type="number"
-        placeholder="Add a price..."
-        onChange={(e) => handleInputChange(e, "price")}
-      />
-    <Calendar
-    findAvailabledays ={findAvailabledays} 
-    />
-      <button type="submit" className="addBut" onClick={addOffice}>
-    add
-      </button>
+    <> 
+    
+    <div className="addFormMainContainer">
+        <div className ="inputField">
+        <h1 className='addFormText'>Add a new office</h1>
+        <div className='addFormInput placeInput'>
+           <input
+           className='placeFormInput'
+            type="text"
+            placeholder="Add a place..."
+            onChange={(e) => handleInputPlaceChange(e)}
+          />
+          <button className="geolocationBut" title="Add your location" onClick={getLocation}><i className="material-icons radarIcon">radar</i></button>
+        </div>
+         
+          <div>
+          
+          </div>
+            <input
+            className='addFormInput'
+            type="text"
+            placeholder="Add a photo..."
+            onChange={(e) => handleInputChange(e, "photo")}
+          />
+            <input
+            className='addFormInput'
+            type="number"
+            placeholder="Add a price..."
+            onChange={(e) => handleInputChange(e, "price")}
+          />
+        <Calendar
+        findAvailabledays ={findAvailabledays} 
+        />
+          <button type="submit" className="addBut" onClick={addOffice}>
+        Add IT!
+          </button>
     </div>
-  
+    </div>
+    <Footer/>
+    </>
    );
 }
 

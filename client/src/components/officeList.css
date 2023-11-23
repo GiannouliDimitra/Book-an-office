@@ -1,12 +1,21 @@
-.renderItemsContainer{
- display: flex;
-
-}
 .listMainContainer{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    width:100vw;
+    height:100vh;
+    border:2px solid blue;
+}
+.renderItemsContainer{
+    display:flex;
+    height: 100%;
 }
 .officeRenderItem{
-    width:50vw;
-    height: 50vh;
+    width:40%;
+    border:1px solid red;
+    overflow:auto;
+}
+.officeRenderMap{
+    z-index: 1;
+    position: absolute;
+    left:770px;
+    width:60%;
+    border:1px solid black;
 }

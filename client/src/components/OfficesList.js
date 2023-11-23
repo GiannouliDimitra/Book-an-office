@@ -12,7 +12,7 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
       });
 
     return ( 
-      <div>
+      <div  className='listMainContainer'>
         <input
         id="searchInput"
           type="text"
@@ -20,8 +20,7 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div>
-      <div className='renderItemsContainer'>
+        <div className='renderItemsContainer'>
          <div
         className='officeRenderItem'>
             {filteredOffices.map ((office,i) => (
@@ -36,15 +35,13 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
                 </div>  
             ))}
         </div> 
-        <div className='officeRenderItem'>
-           <Map 
-                offices = {offices}/>
+        <div className='officeRenderMap'>
+        <Map 
+          className='map'
+               offices = {offices}/>
         </div>
       </div>
-      
-        </div>
-      </div>
-        
+        </div>   
      );
 }
 

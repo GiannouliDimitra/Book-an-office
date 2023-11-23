@@ -65,3 +65,14 @@ border-radius: 12px;
     background: white;
     border: none;
 }
+.photoInputContainer{
+    border: 1px solid black;
+    border-radius: 6px;
+    width:100%;
+    padding: 15px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.uploadBut{
+}

@@ -34,9 +34,8 @@ function NavBar() {
                     <img className="imageLogoNavbar" src={Logo}></img>
                 </div>
             <div className ="navItem"><Link className ="navText" to='/'>Home</Link></div>
-            <div className ="navItem"><Link className ="navText" to='/'>About</Link></div>
+            <div className ="navItem"><Link className ="navText" to='/about'>About</Link></div>
             <div className ="navItem"><Link className ="navText" to='/login'>Login</Link></div>
-            <div className ="navItem"><Link className ="navText" to='/signup'>SignUp</Link></div>
             </div>
             </nav>
             ) : (
@@ -47,7 +46,7 @@ function NavBar() {
                     </div>
                 <div className ="navItem"><Link className ="navText" to='/profil'>Profil of {decoded.name}</Link></div>
                 <div className ="navItem"><Link className ="navText" to='/'>Home</Link></div>
-                <div className ="navItem"><Link className ="navText" to='/'>About</Link></div>
+                <div className ="navItem"><Link className ="navText" to='/about'>About</Link></div>
                 <div className ="navItem"><Link className ="navText" to='/addForm'>Add an Office</Link></div>
                 <div className ="navItem"><Link className ="navText" to='/offices'>Offices</Link></div>
                 <div className ="navItem"><Link className ="navText" onClick={handleLogout} to='/login'>Logout</Link></div>

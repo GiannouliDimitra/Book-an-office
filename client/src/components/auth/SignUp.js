@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from '../Footer';
 import "./signUp.css"
 
 function SignUp () {
@@ -21,7 +22,8 @@ function SignUp () {
     }
 
     return ( 
-        <div className='signUpMainContainer'>
+        <div>
+           <div className='signUpMainContainer'>
             <form className='signUpForm' onSubmit={handleSignUp}>
             <h1 className='signUpText'>SignUp Form</h1>
                 <label className='signUpLabel' htmlFor='name'> Name:</label>
@@ -53,7 +55,10 @@ function SignUp () {
                 />
                 <button className='signUpBut' type='submit'>SignUp</button>
             </form>
+        </div> 
+        <Footer/>
         </div>
+        
      );
 }
 

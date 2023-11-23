@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     width: 43vw;
-    height: 40vh;
+    height: 55vh;
     border: black solid 5px;
     padding: 7% 14%;
     background-color: rgba(248,248,255,0.8);
@@ -30,7 +30,7 @@
     margin: 10px;
     font-weight: bolder;
 }
-.loginLabel,loginInput{
+.loginLabel,.loginInput{
 margin: 4%;
 }
 .loginInput{
@@ -41,9 +41,15 @@ padding: 15px;
 }
 .loginBut{
 padding: 5% 10%;
+margin:8%;
 font-weight: bolder;
 border-radius: 12px;
+font-size: 18px;
 }
 .loginBut:hover{
     background-color: chartreuse;
+}
+.signUpLink{
+    font-size: 20px;
+    color: blue;
 }

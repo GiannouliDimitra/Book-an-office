@@ -1,0 +1,17 @@
+.profilMainContainer{
+  width: 100vw;
+  height: 80vh;
+}
+.mainProfilOfficesContainer{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+.profilOfficeItem{
+  border:black solid 2px;
+  width:200px; 
+  border-radius: 20px; 
+}
+
+.profilImageOffice{
+    width:150px;
+}

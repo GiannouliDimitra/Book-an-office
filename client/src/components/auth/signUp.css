@@ -30,8 +30,8 @@
     margin: 10px;
     font-weight: bolder;
 }
-.signUpLabel,loginInput{
-margin: 4%;
+.signUpLabel,.signUpInput{
+margin:2%;
 }
 .signUpInput{
 border: 1px solid black;
@@ -40,8 +40,10 @@ width:100%;
 padding: 15px;
 }
 .signUpBut{
+margin:18px;
 padding: 5% 10%;
 font-weight: bolder;
+font-size: 18px;
 border-radius: 12px;
 }
 .signUpBut:hover{

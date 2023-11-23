@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode"; 
 import DatePicker from "react-multi-date-picker";
+import 'material-icons/iconfont/material-icons.css'
 import Edit from './Edit';
 
 import "./officeItem.css";
@@ -93,6 +94,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
            
           })
           .catch((error) => console.log(error));
+          setBookPressed(false)
     } catch (error) {
       console.log(error);
     }
@@ -102,23 +104,29 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
       <div>
         { !bookPressed ? (
           <>
-   <div className="ItemContainer">
-   <img className="itemImage item" src={office.photo}/>
-   <h3 className="item">{office.place}</h3>
-   <span className="item">{office.location}</span>
-   <h4 className="item">{office.price} euro/day</h4>
-   <h4 className="item">{office.owner.name} is the owner</h4>
-   { token && ownerOfficesIds.includes(office._id) ? (
-     <div className="itemButtons">
-     <button className="item" onClick={() =>deleteOffice(office._id)}>DELETE</button>
-     <button className="item" onClick={() =>editOffice(office._id)}>UPDATE</button>
-     </div>
-   ) : (
-     <div className="itemButtons">
-     <button className="item" onClick={() => handleBookPressed(office._id, office.place, office.owner)}>BOOK IT</button>
-     </div> 
-   )}
- </div>
+            <div className="ItemContainer">
+               <div className="imageContainer">
+                <img className="itemImage item" src={office.photo}/>
+              </div>
+              <div className="infoOfficeContainer">
+                <h3 className="item placeItem">{office.place}</h3>
+                <h6 className="item">It costs {office.price} euro/day</h6>
+                <h4 className="item ownerOfTheOffice">{office.owner.name} 
+                  <span className="spanIsTheOwner"> is the owner</span></h4>
+              </div>
+   
+
+        { token && ownerOfficesIds.includes(office._id) ? (
+          <div className="ownerItemButtons">
+            <button className="deleteButItem" title="delete the item" onClick={() =>deleteOffice(office._id)}><i className="material-icons delete_foreverIcon">delete_forever</i></button>
+            <button className="editButItem" title = "edit the item"onClick={() =>editOffice(office._id)}><i className="material-icons editIcon">edit</i></button>
+          </div>
+          ) : (
+          <div className="bookItemButtons">
+            <button className="bookButItem" onClick={() => handleBookPressed(office._id, office.place, office.owner)}>BOOK IT</button>
+          </div> 
+          )}
+      </div>
  {isEdit && <Edit
  office = {office}
  setIsEdit = {setIsEdit}
@@ -127,20 +135,23 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
  }
  </>
         ) : (
-          <div>
+          <div className="bookMainContainer">
             <img className="itemImage item" src={office.photo}/>
             <h3 className="item">{office.place}</h3>
-            <span className="item">{office.location}</span>
             <h4 className="item">Cost: {office.price} euro/day</h4>
             <h4 className="item">Owners info: {office.owner.email}</h4>
-            <h4 className="item">{office.availableDates}</h4>
+            <h4 className="item">The available dates are: {(office.availableDates).map((date) => (
+              (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'})
+              .format(date)) + " " ) )} </h4>
             <DatePicker 
               multiple
               value={office.availableDates} 
               onChange={(e) => handleBookInputChange(e)}
             />
-            <button className="item" onClick={addReservation}>Book the office</button>
-             <button className="item" onClick={() => setBookPressed(false)}>Cancel</button>
+            <div className="bookButtons">
+            <button className="item bookBut" onClick={addReservation}>Book the office</button>
+             <button className="item bookButCancel" onClick={() => setBookPressed(false)}>Cancel</button>
+             </div>
           </div>
         )}
      
@@ -150,3 +161,4 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 }
 
 export default OfficeItem ;
+

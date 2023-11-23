@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 import "./login.css"
 
 
@@ -63,9 +64,10 @@ async function handleLogin(e) {
             onChange = {(e) => setPassword(e.target.value)}
             />
             <button className='loginBut' type='submit'>Login</button>
+            <h4>To create an account <Link className='signUpLink' to='/signUp'> Sign UP</Link></h4>
         </form>
     </div>
-      <Footer/>
+    <Footer/>
       </>
      );
 }

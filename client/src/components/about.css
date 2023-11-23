@@ -1,4 +1,4 @@
-.homeMainContainer{
+.aboutMainContainer{
     width: 100vw;
     height: 100vh;
     background-image: url("../photos/homePic.jpg");
@@ -11,7 +11,7 @@
 }
 .titleContainer{
 border: black solid 6px;
-padding: 7% 14%;
+padding: 7% 10%;
 background-color: rgba(248,248,255,0.8);
 border-radius: 8px;
 }

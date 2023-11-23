@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode"; 
 import axios from 'axios';
-import Footer from "./Footer";
+import "./profil.css";
 
 function Profil ( { offices }) {
 
@@ -30,7 +30,7 @@ function getAllReservations(){
 
 console.log ("office and offices ",  offices)
     return ( 
-      <div>
+      <div className='profilMainContainer'>
         <div>
             <h2>Your reservations</h2>
 <div>
@@ -42,7 +42,7 @@ console.log ("office and offices ",  offices)
                <span>{user.officePlace}</span>
                </div>
                <div>
-              <span>{(user.dates).map ((date) => (
+              <span>{(user.dates).map((date) => (
                 (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + " and... ") )} </span>
                </div>
                 </div>  
@@ -51,20 +51,22 @@ console.log ("office and offices ",  offices)
         <div>
             <h2>Your offices</h2>
 </div>
-        <div>
+        <div  className='mainProfilOfficesContainer'>
 {offices
     .filter( (office) => office.owner._id === decoded.id).map ((office,i) => (
               <div
               key= {i}>
+               <div className='profilOfficeItem'> 
+                  <img className='profilImageOffice' src ={office.photo}></img>
+                  <div>
+                    <span>{office.place}</span> 
+                    </div>
+                  </div>
                 <div>
-               <span>{office.price}</span>
-               </div>
-               <div>
-               <span>{office.place}</span>
+              
                </div>
                 </div>  
             ))}</div>
-<Footer/>
       </div>
        
        

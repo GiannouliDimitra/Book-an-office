@@ -32,18 +32,19 @@ console.log ("office and offices ",  offices)
     return ( 
       <div className='profilMainContainer'>
         <div>
-            <h2>Your reservations</h2>
+            <h2 className='reservationTitle'>Your reservations</h2>
 <div>
 {reservations
     .filter( (reservation) => reservation.userId === decoded.id).map ((user,i) => (
               <div
+              className='reservationContainer'
               key= {i}>
-                <div>
-               <span>{user.officePlace}</span>
+                <div >
+               <h4>You will be in <span>{user.officePlace}</span></h4>
                </div>
                <div>
-              <span>{(user.dates).map((date) => (
-                (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + " and... ") )} </span>
+              <h4> the following days:<span>{(user.dates).map((date) => (
+                (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + "  ") )} </span></h4>
                </div>
                 </div>  
             ))}</div>

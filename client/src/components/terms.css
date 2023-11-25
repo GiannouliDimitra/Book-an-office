@@ -1,4 +1,4 @@
-.aboutMainContainer{
+.termsMainContainer{
     width: 100vw;
     height: 100vh;
     background-image: url("../photos/background.jpg");
@@ -7,17 +7,18 @@
     justify-content: center;
     align-items: center;
 }
-.titleAboutContainer{
+.titleTermsContainer{
     width:35vw;
     height:50vh;
+    box-shadow: 0 3px 10px #00000033;
     transform: translate(-20px, -120px);
     padding: 2% 3%;
-    background-color: rgba(79, 70, 61,0.7) ;
+    background-color: rgba(79, 70, 61,0.7);
     border-radius: 8px;
     box-shadow: 10px 10px 50px #E4D7CEff;
-    color:#E4D7CEff;
+    color:#47362Dff;
     }
-.aboutTitle{
+.termsTitle{
 font-size: 26px;
 font-family: 'Dosis', sans-serif;
 font-weight: bolder;

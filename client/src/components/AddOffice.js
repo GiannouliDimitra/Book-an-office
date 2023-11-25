@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { storage } from "./firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from 'uuid';
+import Swal from 'sweetalert2';
 import Footer from "./Footer";
 import { setKey, setLanguage, geocode, RequestType } from "react-geocode";
 import 'material-icons/iconfont/material-icons.css';
@@ -35,22 +36,6 @@ const navigate = useNavigate();
     })
     .catch(console.error);
 };
-
-  //get the location
-  function getLocation(){
-    console.log("this is the coors works")
-    let lat;
-    let lng;
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function (position) {
-          lat = position.coords.latitude.toFixed(2);
-          lng = position.coords.longitude.toFixed(2);
-         setOffice( {...office, location: [lat, lng] });
-          });
-        } else {
-          alert = ("Geolocation is not supported by this browser.");
-        }
-      };
  
 //handleInputs
   function handleInputChange(e, fieldName) {
@@ -74,7 +59,8 @@ const navigate = useNavigate();
       axios
           .post("http://localhost:8000/create", office, { headers:{ Authorization: `Bearer ${token}`} })
           .then((res) => {
-            alert("The office " + res.data.createdOffice.place + " is added.")
+            Swal.fire({ text:"The office " + res.data.createdOffice.place + " is added.",
+                        confirmButtonColor:"#B45931ff" })
           })
           .then(() => {
             getAllOffices()
@@ -106,7 +92,8 @@ const navigate = useNavigate();
             setOffice({...office, photo:url})
             }) 
         });
-        alert("The image is uploaded");
+        Swal.fire({ text:"The image is uploaded.",
+        confirmButtonColor:"#B45931ff"});
         }
     }
   return ( 
@@ -121,7 +108,6 @@ const navigate = useNavigate();
             placeholder="Add a place..."
             onChange={(e) => handleInputPlaceChange(e, "place")}
           />
-          <button className="geolocationBut" title="Add your location" onClick={getLocation}><i className="material-icons radarIcon">radar</i></button>
         </div>
          
           <div>
@@ -144,11 +130,12 @@ const navigate = useNavigate();
             onChange={(e) => handleInputChange(e, "price")}
           />
         <Calendar
+        className="calendarAddForm"
         findAvailabledays ={findAvailabledays} 
         />
           <button type="submit" className="addBut" onClick={addOffice}>
         Add IT!
-          </button>
+          </button>  
     </div>
     </div>
     <Footer/>

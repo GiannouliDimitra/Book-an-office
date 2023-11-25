@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import Footer from '../Footer';
 import "./signUp.css"
 
@@ -17,7 +18,9 @@ function SignUp () {
      let res = await axios.post("http://localhost:8000/signUp", {
        name, email, password,
      });
-     alert(res.data.msg);
+     Swal.fire({text: res.data.msg,
+        confirmButtonColor:"#B45931ff"
+    });
      navigate("/login");
     }
 

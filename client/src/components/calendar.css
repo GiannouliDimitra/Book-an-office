@@ -1,12 +1,19 @@
 .custom-calendar{
-    background: white;
-    border: 2px solid black;
+    background-color: #E4D7CEff;
     border-radius: 8px;
     font-size: 14px;
     padding: 3px 10px;
     transform: translateX(150px);
+    box-shadow: 0 0 2px #E4D7CEff;
 }
 .custom-input{
+    width:24vw;
+    background: #E4D7CEff;
+    border:none;
+    font-size: 20px;
     padding: 15px; 
-    border-radius: 6px; 
+    border-radius: 8px; 
+}
+.custom-input:focus {
+outline: none;
 }

@@ -1,21 +1,23 @@
 .homeMainContainer{
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../photos/homePic.jpg");
-    background-size: cover;
-    border: black solid 1px;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+width: 100vw;
+height: 100vh;
+background-image: url("../photos/background.jpg");
+background-size:cover;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .titleContainer{
-border: black solid 6px;
-padding: 7% 14%;
-background-color: rgba(248,248,255,0.8);
+box-shadow: 0 3px 10px #00000033;
+transform: translateY(-100px);
+padding: 4% 8%;
+background-color: rgba(79, 70, 61,0.7) ;
 border-radius: 8px;
+box-shadow: 10px 10px 10px #E4D7CEff;
+color:#E4D7CEff;
 }
 .homeTitle{
-font-size: 30px;
-font-family: Helvetica;
+    font-size: 30px;
+    font-family: 'Dosis';
 }
+

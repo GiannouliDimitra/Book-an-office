@@ -1,5 +1,6 @@
 *{
-    font-family: Helvetica;
+font-family: 'Dosis', sans-serif;
+box-sizing:border-box;
 }
 
 .loginMainContainer{
@@ -52,4 +53,12 @@ font-size: 18px;
 .signUpLink{
     font-size: 20px;
     color: blue;
+}
+.swal2-popup {
+font-size: 20px;
+background: #803C24ff !important;
+color: #E4D7CEff!important;
+}
+.swal2-popup .swal2-styled:focus {
+    box-shadow: none !important;
 }

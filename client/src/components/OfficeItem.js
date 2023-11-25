@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode"; 
 import DatePicker from "react-multi-date-picker";
+import Swal from 'sweetalert2';
 import 'material-icons/iconfont/material-icons.css'
 import Edit from './Edit';
 
@@ -39,15 +40,31 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 
 
   async function deleteOffice(id) {
-    const result = window.confirm("Are you sure you want to delete it?");
-    if(result){
-      try {
-        await axios.delete(`http://localhost:8000/${id}`);
-        getAllOffices();
-      } catch (error) {
-        console.log("delete product", error);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonColor: "#49be25",
+      cancelButtonColor: "#be4d25",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) { 
+        try {
+          axios.delete(`http://localhost:8000/${id}`)
+          .then(() => {
+             getAllOffices();
+          })
+         
+        } catch (error) {
+          console.log("delete product", error);
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
       }
-    }
+    });
   };
 // open the edit field of the office
   async function editOffice(id) {

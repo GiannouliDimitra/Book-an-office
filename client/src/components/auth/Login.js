@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import Swal from 'sweetalert2';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer";
@@ -28,14 +29,16 @@ async function handleLogin(e) {
 
       // Save the token in the browser
       if(res.status === 200) {
-        alert(res.data.msg);
+        Swal.fire({text: res.data.msg,
+          confirmButtonColor:"#B45931ff"});
         decoded = jwtDecode(token);
         console.log (decoded, token)
         localStorage.setItem("token", token);
         navigate("/");
       }
     } catch (error) {
-       alert("Can not login, please check your email or password.");
+      Swal.fire( {text: "Can not login, please check your email or password.",
+      confirmButtonColor:"#B45931ff"});
     }
   }
 

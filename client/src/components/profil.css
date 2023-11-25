@@ -15,3 +15,12 @@
 .profilImageOffice{
     width:150px;
 }
+.reservationContainer{
+  border: 1px solid black;
+  width:20%;
+  height:60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px;
+}

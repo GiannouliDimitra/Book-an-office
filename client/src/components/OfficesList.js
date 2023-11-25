@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OfficeItem from "./OfficeItem";
 import Map from "./Map";
+import Footer from "./Footer";
 import "./officeList.css";
 
 function OfficesList ({ office, offices, setOffice, getAllOffices }) {
@@ -41,6 +42,7 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
                offices = {offices}/>
         </div>
       </div>
+     {/*  <Footer/> */}
         </div>   
      );
 }

@@ -4,8 +4,8 @@ import './footer.css';
 function Footer() {
     return (  
         <div className="footerContainer">
-            <div className ="footerItem"><Link className ="footerItemText" to='/'>Terms</Link></div>
-            <div className ="footerItem"><Link className ="footerItemText" to='/contact'>Contact us to:</Link></div>
+            <div className ="footerItem"><Link className ="footerItemText" to='/terms'>Terms</Link></div>
+            <div className ="footerItem"><Link className ="footerItemText" to='/contact'>Contact</Link></div>
         </div>
     );
 }

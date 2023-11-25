@@ -2,28 +2,23 @@
 display: flex;
 justify-content: space-around;
 align-items: center;
-font-size: 16px;
-border: 6px solid black;
+font-size: 20px;
+background-color: #47362Dff;
 }
 .navItem{
-margin:1%;
 padding:1%;
 }
 .navItem:hover{
-background-color: #D3D3D3;
-border: 3px solid black;
-margin:0%;
-border-radius: 8px;
+background-color: rgba(238, 227, 216,0.1);
+border-radius:8px;
 }
 .navText{
-    font-size: 20px;
-    border-radius: 18px;
-    font-family: Helvetica;
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
+border-radius: 18px;
+font-family: 'Dosis', sans-serif;
+text-decoration: none;
+color: #E4D7CEff;
+font-weight: bolder;
 }
 .imageLogoNavbar{
-    width:50px;
-
+    width:90px;
 }

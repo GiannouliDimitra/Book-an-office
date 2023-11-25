@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { jwtDecode } from "jwt-decode"; 
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import 'material-icons/iconfont/material-icons.css';
 import "./profil.css";
 
 function Profil ( { offices }) {
@@ -29,24 +31,55 @@ function getAllReservations(){
   }, []);
 
 console.log ("office and offices ",  offices)
+
+async function deleteReservation(id) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    showCancelButton: true,
+    confirmButtonColor: "#49be25",
+    cancelButtonColor: "#be4d25",
+    confirmButtonText: "Yes!",
+    cancelButtonText:"No",
+  }).then((result) => {
+    if (result.isConfirmed) { 
+      try {
+        axios.delete(`http://localhost:8000/${id}`)
+        .then(() => {
+           getAllReservations();
+        })
+       
+      } catch (error) {
+        console.log("delete product", error);
+      }
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        confirmButtonColor:"#B45931ff",
+      });
+    }
+  });
+};
     return ( 
       <div className='profilMainContainer'>
         <div>
             <h2 className='reservationTitle'>Your reservations</h2>
-<div>
+<div className='mainReservationContainer'>
 {reservations
     .filter( (reservation) => reservation.userId === decoded.id).map ((user,i) => (
               <div
               className='reservationContainer'
               key= {i}>
-                <div >
+                <div className='containerTextInfo'>
                <h4>You will be in <span>{user.officePlace}</span></h4>
-               </div>
-               <div>
-              <h4> the following days:<span>{(user.dates).map((date) => (
+              <h4> the following days:<span className="reservationDates">{(user.dates).map((date) => (
                 (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + "  ") )} </span></h4>
-               </div>
-                </div>  
+                </div>
+                <button 
+                className="deleteButReservation" 
+                title="delete the item" 
+                onClick={() =>deleteReservation(user._id)}><i className="material-icons delete_foreverIcon">delete_forever</i></button>
+                </div>
             ))}</div>
         </div>
         <div>

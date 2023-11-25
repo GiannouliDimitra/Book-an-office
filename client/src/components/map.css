@@ -14,9 +14,16 @@ padding:0;
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
-    background-color:red;
+    background-color:#803C24ff;
+    color:white;
+    font-size: 20px;
     transform: translate(-20%, -20%);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.popup{
+    font-size:20px;
+    font-weight: bold;
+    
 }

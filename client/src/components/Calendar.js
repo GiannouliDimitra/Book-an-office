@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DatePicker from "react-multi-date-picker";
-import "react-multi-date-picker/styles/backgrounds/bg-brown.css"
+import "react-multi-date-picker/styles/backgrounds/bg-brown.css";
 import ("./calendar.css")
 export default function Calendar( { findAvailabledays }) {
 

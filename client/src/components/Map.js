@@ -11,7 +11,7 @@ const Map = ( { offices }) => {
 
 //icon creation
     const customIcon = new Icon ({
-        iconUrl: require ("../photos/markerIcon.png"),
+        iconUrl: require ("../photos/pin.png"),
         iconSize: [38,38]
     });
 //cluster icon creation
@@ -24,7 +24,7 @@ const Map = ( { offices }) => {
     };
 
     return (
-      <MapContainer className="mainContainer"center ={position} zoom={13}>
+      <MapContainer className="mainContainer"center ={position} zoom={5}>
        <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -35,7 +35,7 @@ const Map = ( { offices }) => {
     >
          {offices.map ((office,i) => (
     <Marker key = {i} position = { office.location } icon = {customIcon}>
-<Popup>{ office.name } <br></br> { office.prise }</Popup>
+<Popup className="popup">{office.place} <br/>{ office.price } €/day </Popup>
     </Marker>
    ))}
     </MarkerClusterGroup>

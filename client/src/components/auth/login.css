@@ -55,9 +55,10 @@ font-size: 18px;
     color: blue;
 }
 .swal2-popup {
-font-size: 20px;
-background: #803C24ff !important;
+font-size:20px;
+background: #4F463Dff !important;
 color: #E4D7CEff!important;
+width:1000px;
 }
 .swal2-popup .swal2-styled:focus {
     box-shadow: none !important;

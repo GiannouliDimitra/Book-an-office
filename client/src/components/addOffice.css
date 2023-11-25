@@ -82,32 +82,18 @@ justify-content: space-between;
 .inputField:focus {
     box-shadow: 0 10px 2px #E4D7CEff;
 }
-button{
-      /* remove default behavior */
-appearance:none;
--webkit-appearance:none;
-padding:10px;
-border:none;
-font-weight:600;
-width:20%;
-background-color: #E4D7CEff;
-color:#47362Dff;
-font-size: 20px;
-border-radius: 8px;
-padding: 2px;
-border: 1px solid #47362Dff;
-}
 .addBut{
 border: 1px solid #47362Dff;  
 }
-button:hover{
+.addBut:hover,.uploadBut:hover{
 background-color: #47362Dff;
 color:#E4D7CEff ;
 }
 .swal2-popup {
 font-size: 20px;
-background: #803C24ff !important;
+background: #4F463Dff !important;
 color: #E4D7CEff!important;
+width:1000px;
 }
 .swal2-popup .swal2-styled:focus {
 box-shadow: none !important;

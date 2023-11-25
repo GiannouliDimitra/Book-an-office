@@ -51,10 +51,11 @@ border-radius: 12px;
     background-color: chartreuse;
 }
 .swal2-popup {
-    font-size: 20px;
-    background: #803C24ff !important;
-    color: #E4D7CEff!important;
-    }
-    .swal2-popup .swal2-styled:focus {
-        box-shadow: none !important;
-    }
+font-size:20px;
+background: #4F463Dff !important;
+color: #E4D7CEff!important;
+width:1000px;
+}
+.swal2-popup .swal2-styled:focus {
+box-shadow: none !important;
+}

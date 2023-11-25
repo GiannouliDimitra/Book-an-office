@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode"; 
 import DatePicker from "react-multi-date-picker";
+import "react-multi-date-picker/styles/backgrounds/bg-brown.css";
 import Swal from 'sweetalert2';
-import 'material-icons/iconfont/material-icons.css'
+import 'material-icons/iconfont/material-icons.css';
 import Edit from './Edit';
 
 import "./officeItem.css";
@@ -46,7 +47,8 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
       showCancelButton: true,
       confirmButtonColor: "#49be25",
       cancelButtonColor: "#be4d25",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes!",
+      cancelButtonText:"No",
     }).then((result) => {
       if (result.isConfirmed) { 
         try {
@@ -107,8 +109,8 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
       axios
           .post("http://localhost:8000/reservation", reservation )
           .then((res) => {
-            alert("The reservation " + res.data.createdReservation._id + " is added.")
-           
+            Swal.fire({ text: decoded.name + " your reservation in " + reservation.officePlace + " is added.",
+            confirmButtonColor:"#B45931ff"})
           })
           .catch((error) => console.log(error));
           setBookPressed(false)
@@ -127,7 +129,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
               </div>
               <div className="infoOfficeContainer">
                 <h3 className="item placeItem">{office.place}</h3>
-                <h6 className="item">It costs {office.price} euro/day</h6>
+                <h6 className="item costItem">It costs {office.price} euro/day</h6>
                 <h4 className="item ownerOfTheOffice">{office.owner.name} 
                   <span className="spanIsTheOwner"> is the owner</span></h4>
               </div>
@@ -153,14 +155,16 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
  </>
         ) : (
           <div className="bookMainContainer">
-            <img className="itemImage item" src={office.photo}/>
-            <h3 className="item">{office.place}</h3>
-            <h4 className="item">Cost: {office.price} euro/day</h4>
-            <h4 className="item">Owners info: {office.owner.email}</h4>
-            <h4 className="item">The available dates are: {(office.availableDates).map((date) => (
+            <img className="itemImage item bookedImage" src={office.photo}/>
+            <h3 className="item bookedPlace">{office.place}</h3>
+            <h4 className="item bookedPrice">Cost: {office.price} euro/day</h4>
+            <h4 className="item bookedOwner">Owners info: <span className="ownerEmail">{office.owner.email}</span></h4>
+            <h4 className="item bookedDates">The available dates are: <br/>{(office.availableDates).map((date) => (
               (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'})
               .format(date)) + " " ) )} </h4>
             <DatePicker 
+              className="custom-calendar bg-brown"
+              inputClass="custom-input"
               multiple
               value={office.availableDates} 
               onChange={(e) => handleBookInputChange(e)}

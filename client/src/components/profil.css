@@ -15,12 +15,43 @@
 .profilImageOffice{
     width:150px;
 }
-.reservationContainer{
-  border: 1px solid black;
-  width:20%;
-  height:60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
+.mainReservationContainer{
+border:rgb(164, 18, 18) solid 2px;
+width: 100vw;
+height:35%;
+overflow:auto;
+display:flex;
 }
+.reservationContainer{
+border-radius: 10px;
+border:rgb(0, 0, 0) solid 2px;
+margin:20px;
+padding:20px;
+background-color: rgba(228, 215, 206,0.5);
+font-size: 20px;
+display: flex;
+}
+.containerTextInfo{
+width:200px;
+
+}
+.deleteButReservation{
+  border: none;
+  margin:10px;
+  background:none;
+}
+.deleteButReservation:{
+
+}
+.reservationDates{
+  color:#B45931ff;
+}
+.swal2-popup {
+  font-size: 20px;
+  background: #4F463Dff !important;
+  color: #E4D7CEff!important;
+  width:1000px;
+  }
+  .swal2-popup .swal2-styled:focus {
+  box-shadow: none !important;
+  }

@@ -10,6 +10,8 @@ function SignUp () {
     let [name, setName] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
+    const [eye,setEye] = useState ("closedEyeSignUp");
+    const[passwordType,setPasswordType] = useState ("password");
 
     let navigate = useNavigate();
 
@@ -26,7 +28,8 @@ function SignUp () {
 
     return ( 
         <div>
-           <div className='signUpMainContainer'>
+            <div className='signUpMainContainer'>
+             <div className='signUpContainer'>
             <form className='signUpForm' onSubmit={handleSignUp}>
             <h1 className='signUpText'>SignUp Form</h1>
                 <label className='signUpLabel' htmlFor='name'> Name:</label>
@@ -47,20 +50,36 @@ function SignUp () {
                 value = {email}
                 onChange = {(e) => setEmail(e.target.value)}
                 />
-                 <label htmlFor='password'> Password:</label>
+                 <label className="signUpLabel"htmlFor='password'> Password:</label>
                 <input
                 className='signUpInput'
                 id='password'
-                type='password'
+                type={passwordType}
                 placeholder='Add your password..'
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
                 />
                 <button className='signUpBut' type='submit'>SignUp</button>
             </form>
+            <button className={eye} 
+            type="text" 
+            onClick={()=>{
+              if (eye==="closedEyeSignUp"){
+                setEye("openEyeSignUp")
+                setPasswordType("text")
+                return
+              }
+              else {
+                setEye("closedEyeSignUp")
+                setPasswordType("password")
+                return
+              }
+              }}><img className="imgEye"src={require(`./authPhotos/${eye}.png`)} /></button>
         </div> 
+        </div>
         <Footer/>
         </div>
+        
         
      );
 }

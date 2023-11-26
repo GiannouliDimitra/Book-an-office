@@ -1,22 +1,22 @@
 .aboutMainContainer{
-    width: 100vw;
-    height: 100vh;
-    background-image: url("../photos/background.jpg");
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+width: 100vw;
+height: 100vh;
+background-image: url("../photos/background.jpg");
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .titleAboutContainer{
-    width:35vw;
-    height:50vh;
-    transform: translate(-20px, -120px);
-    padding: 2% 3%;
-    background-color: rgba(79, 70, 61,0.7) ;
-    border-radius: 8px;
-    box-shadow: 10px 10px 50px #E4D7CEff;
-    color:#E4D7CEff;
-    }
+width:35vw;
+height:50vh;
+transform: translate(-20px, -120px);
+padding: 2% 3%;
+background-color: rgba(79, 70, 61,0.7);
+border-radius: 8px;
+box-shadow: 10px 10px 50px #E4D7CEff;
+color:#E4D7CEff;
+}
 .aboutTitle{
 font-size: 26px;
 font-family: 'Dosis', sans-serif;

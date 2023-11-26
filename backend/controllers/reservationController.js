@@ -16,8 +16,8 @@ const  findReservations = async (req, res) => {
 //post
 const addReservation = async (req,res) => {
     try {
-        let { dates, officePlace, userId, ownerId, officeId } =req.body;
-        let createdReservation = await Reservation.create({ dates, officePlace, userId, ownerId, officeId });
+        let { dates, totalPrice, officePlace, userId, ownerId, officeId } =req.body;
+        let createdReservation = await Reservation.create({ dates, totalPrice, officePlace, userId, ownerId, officeId });
         res.status(200).send({ msg: "The reservation is added", createdReservation });
     } catch (error) {
         console.log(error); 
@@ -41,7 +41,8 @@ const  updateReservation = async (req, res) => {
 //delete
 const deleteReservation = async (req,res) => {
     try {
-        await Reservation.deleteOne({_id: req.params.id });
+        let id = req.params.id;
+        await Reservation.deleteOne({_id: id });
         res.status(200).send ({msg: "The office is deleted successfully!"});
     } catch (error) {
         console.log (error);

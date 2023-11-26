@@ -97,49 +97,42 @@ const navigate = useNavigate();
         }
     }
   return ( 
-    <>    
-    <div className="addFormMainContainer">
+    <div>    
+      <div className="addFormMainContainer">
         <div className ="inputField">
-        <h1 className='addFormText'>Add a new office</h1>
-        <div className='addFormInput placeInput'>
-           <input
+          <h1 className='addFormText'>Add a new office</h1>
+            <input
             className='placeFormInput'
             type="text"
             placeholder="Add a place..."
             onChange={(e) => handleInputPlaceChange(e, "place")}
-          />
-        </div>
-         
-          <div>
-          
-          </div>
+            />
           <div className="photoInputContainer">
                <input
               className='addFiledInput'
               type="file"
               placeholder="Add a photo..."
               onChange={(e) => setImageUpload(e.target.files[0])}
-          />
+              />
               <button  className='uploadBut' onClick={uploadImage}>Upload</button>
-          </div>
-         
+          </div>   
             <input
-            className='addFormInput'
+            className='addPriceInput'
             type="number"
             placeholder="Add a price..."
             onChange={(e) => handleInputChange(e, "price")}
-          />
-        <Calendar
-        className="calendarAddForm"
-        findAvailabledays ={findAvailabledays} 
-        />
+             />
+            <Calendar
+            className="calendarAddForm"
+            findAvailabledays ={findAvailabledays} 
+            />
           <button type="submit" className="addBut" onClick={addOffice}>
-        Add IT!
+           Add IT!
           </button>  
-    </div>
+        </div>
     </div>
     <Footer/>
-    </>
+    </div>
    );
 }
 

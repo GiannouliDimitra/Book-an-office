@@ -13,6 +13,8 @@ function Login () {
 //states && variables
 let [email, setEmail] = useState("");
 let [password, setPassword] = useState("");
+const [eye,setEye] = useState ("closedEye");
+const[passwordType,setPasswordType] = useState ("password");
 let decoded;
 let token;
 const navigate = useNavigate();
@@ -42,10 +44,10 @@ async function handleLogin(e) {
     }
   }
 
-
     return ( 
-      <>
-        <div className='loginMainContainer'>
+      <div>
+      <div className='loginMainContainer'>
+        <div className='loginContainer'>
         <form className='loginForm' onSubmit={handleLogin}>
           <h1 className='loginText'>Login</h1>
              <label className='loginLabel' htmlFor='email'> Email:</label>
@@ -58,20 +60,35 @@ async function handleLogin(e) {
             onChange = {(e) => setEmail(e.target.value)}
             />
              <label className='loginLabel' htmlFor='password'> Password:</label>
-            <input
+             <input
             className='loginInput'
             id='password'
-            type='password'
+            type={passwordType}
             placeholder='Add your password..'
             value = {password}
             onChange = {(e) => setPassword(e.target.value)}
-            />
+            />   
             <button className='loginBut' type='submit'>Login</button>
-            <h4>To create an account <Link className='signUpLink' to='/signUp'> Sign UP</Link></h4>
+            <h4 className='signUpTextInfo'>To create an account <Link className='signUpLink' to='/signUp'>  Sign UP</Link></h4>
         </form>
+        <button className={eye} 
+            type="text" 
+            onClick={()=>{
+              if (eye==="closedEye"){
+                setEye("openEye")
+                setPasswordType("text")
+                return
+              }
+              else {
+                setEye("closedEye")
+                setPasswordType("password")
+                return
+              }
+              }}><img className="imgEye"src={require(`./authPhotos/${eye}.png`)} /></button>
     </div>
-    <Footer/>
-      </>
+    </div>
+     <Footer/>
+     </div>
      );
 }
 

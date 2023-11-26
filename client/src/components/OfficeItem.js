@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode"; 
+import { useNavigate } from 'react-router-dom';
 import DatePicker from "react-multi-date-picker";
 import "react-multi-date-picker/styles/backgrounds/bg-brown.css";
 import Swal from 'sweetalert2';
@@ -19,6 +20,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   const [values, setValues] = useState([]);
   const [reservation, setReservation] = useState ({
     dates: [],
+    totalPrice:0,
     officePlace:"",
     userId: "",
     ownerId: "",
@@ -27,14 +29,13 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   //variables for the token
   let token = localStorage.getItem("token");
   let decoded = jwtDecode(token);
-
+  const navigate = useNavigate();
 
   function filter () {
     let ownerOfficesIds = offices
     .filter( (office) => office.owner._id === decoded.id)
     .map( (office) => office._id);
     setOwnerOfficesIds(ownerOfficesIds);
-  
   }
 
   useEffect(( )=> {filter()} , [decoded.id]);
@@ -45,8 +46,8 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       showCancelButton: true,
-      confirmButtonColor: "#49be25",
-      cancelButtonColor: "#be4d25",
+      confirmButtonColor: "#803C24ff",
+      cancelButtonColor: "#B45931ff",
       confirmButtonText: "Yes!",
       cancelButtonText:"No",
     }).then((result) => {
@@ -63,7 +64,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
-          icon: "success"
+          confirmButtonColor:"#B45931ff",
         });
       }
     });
@@ -75,13 +76,15 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   };
 
   function findAvailabledays(days) {
-   let pickedDate = reservation.dates.filter((date) => !days.includes(date))
-    console.log("you choose", reservation.dates, days, pickedDate)
-     for(let i=0; i<days.length; i++) { 
-      setOffice({...reservation, dates:days}) 
-  
+    console.log("you choose", reservation.dates, days)
+    for(let i=0; i<days.length; i++) {
+      setReservation({...reservation, dates:days})
+      let date = new Date (office.availableDates[i])
+      console.log("the date", date)
     }
   }
+
+  //handler functions
 
   async function handleBookPressed(id) {
     setBookPressed(true);
@@ -90,16 +93,18 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 
   function handleBookInputChange(e) {
     setValues(e);
-    console.log("from book input" ,e)
+    console.log("from book input" ,e,"number of reservations", e.length)
     findAvailabledays(e);
     setReservation({
       ...reservation,
-      dates: values,
+      dates: e,
+      totalPrice:e.length*office.price,
       officePlace: office.place,
       userId: decoded.id,
       ownerId: office.owner,
       officeId: office._id,
     });
+
   };
 
  
@@ -114,6 +119,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
           })
           .catch((error) => console.log(error));
           setBookPressed(false)
+          navigate('/profil')
     } catch (error) {
       console.log(error);
     }

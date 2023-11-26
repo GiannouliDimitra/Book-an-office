@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import 'material-icons/iconfont/material-icons.css';
+import Footer from "./Footer";
 import "./profil.css";
 
 function Profil ( { offices }) {
@@ -33,24 +34,25 @@ function getAllReservations(){
 console.log ("office and offices ",  offices)
 
 async function deleteReservation(id) {
+  console.log(id)
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
     showCancelButton: true,
-    confirmButtonColor: "#49be25",
-    cancelButtonColor: "#be4d25",
+    confirmButtonColor: "#803C24ff",
+    cancelButtonColor: "#B45931ff",
     confirmButtonText: "Yes!",
     cancelButtonText:"No",
   }).then((result) => {
     if (result.isConfirmed) { 
       try {
-        axios.delete(`http://localhost:8000/${id}`)
+        axios.delete(`http://localhost:8000/reservation/${id}`)
         .then(() => {
            getAllReservations();
         })
        
       } catch (error) {
-        console.log("delete product", error);
+        console.log("delete item", error);
       }
       Swal.fire({
         title: "Deleted!",
@@ -61,6 +63,7 @@ async function deleteReservation(id) {
   });
 };
     return ( 
+      <div>      
       <div className='profilMainContainer'>
         <div>
             <h2 className='reservationTitle'>Your reservations</h2>
@@ -72,8 +75,8 @@ async function deleteReservation(id) {
               key= {i}>
                 <div className='containerTextInfo'>
                <h4>You will be in <span>{user.officePlace}</span></h4>
-              <h4> the following days:<span className="reservationDates">{(user.dates).map((date) => (
-                (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + "  ") )} </span></h4>
+              <h4> the following days:<br/><span className="reservationDates">{(user.dates).map((date) => (
+                (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + " _ ") )}</span></h4>
                 </div>
                 <button 
                 className="deleteButReservation" 
@@ -82,10 +85,9 @@ async function deleteReservation(id) {
                 </div>
             ))}</div>
         </div>
-        <div>
-            <h2>Your offices</h2>
-</div>
-        <div  className='mainProfilOfficesContainer'>
+        <div className='mainProfilOfficesContainer'>
+            <h2 className='officesTitle'>Your offices</h2>
+        <div  className='profilOfficesContainer'>
 {offices
     .filter( (office) => office.owner._id === decoded.id).map ((office,i) => (
               <div
@@ -93,7 +95,7 @@ async function deleteReservation(id) {
                <div className='profilOfficeItem'> 
                   <img className='profilImageOffice' src ={office.photo}></img>
                   <div>
-                    <span>{office.place}</span> 
+                    <span className="profilOfficeText">{office.place}</span> 
                     </div>
                   </div>
                 <div>
@@ -101,7 +103,11 @@ async function deleteReservation(id) {
                </div>
                 </div>  
             ))}</div>
+            </div>
       </div>
+      <Footer/>
+      </div>
+
        
        
      );

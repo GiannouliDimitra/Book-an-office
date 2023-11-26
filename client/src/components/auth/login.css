@@ -2,57 +2,102 @@
 font-family: 'Dosis', sans-serif;
 box-sizing:border-box;
 }
-
 .loginMainContainer{
-    width: 100vw;
-    height: 100vh;
-    background-image: url("./authPhotos/homePic.jpg");
-    background-size: cover;
-    border: black solid 1px;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+width:100vw;
+height:100vh;
+background-image: url("./authPhotos/background.jpg");
+background-size: cover;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.loginContainer{
+width:60vw;
+height:80vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 7% 14%;
+background-color: rgba(79, 70, 61,0.7);
+border-radius:10px;   
 }
 .loginForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 43vw;
-    height: 55vh;
-    border: black solid 5px;
-    padding: 7% 14%;
-    background-color: rgba(248,248,255,0.8);
-    border-radius: 8px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width:100%;   
 }
 .loginText{
-    font-size: 30px;
-    margin: 10px;
-    font-weight: bolder;
+color:#E4D7CEff;
+font-size: 30px;
+margin: 10px;
+font-weight: bolder;
 }
 .loginLabel,.loginInput{
-margin: 4%;
+margin:2%;
+font-size: 20px;
 }
 .loginInput{
-border: 1px solid black;
-border-radius: 6px;
+border: none;
+border-radius:10px;
+background-color: #E4D7CEff;
 width:100%;
-padding: 15px;
+padding:15px;
+}
+.loginInput:focus{
+box-shadow:0 0 7px 2px #803C24ff;
+outline: none;
+}
+.loginLabel{
+color:#E4D7CEff;
+font-size: 20px;
 }
 .loginBut{
-padding: 5% 10%;
-margin:8%;
-font-weight: bolder;
-border-radius: 12px;
-font-size: 18px;
+font-size: 20px;
+width:200px;
+height:50px;
+padding: 2px;
+border-radius: 10px;
+background-color: #E4D7CEff;
+border: 1px solid #47362Dff;  
 }
 .loginBut:hover{
-    background-color: chartreuse;
+background-color: #47362Dff;
+color:#E4D7CEff ;
 }
 .signUpLink{
-    font-size: 20px;
-    color: blue;
+font-size: 30px;
+font-weight: bolder;
+color:blue;
+margin: 10px;
+}
+.imgEye{
+width:50px;
+height:50px;  
+}
+.closedEye{
+position:relative;
+top:-170px;
+left:240px;
+background-color: transparent;
+background-size: cover;
+border: none;
+}
+.openEye{
+position:relative;
+top:-170px;
+left:240px;
+background-color: transparent;
+background-size: cover;
+border: none;
+}
+.signUpTextInfo{
+    margin:10px 0;
+    font-size:25px;
+    color: #E4D7CEff;
 }
 .swal2-popup {
 font-size:20px;
@@ -61,5 +106,5 @@ color: #E4D7CEff!important;
 width:1000px;
 }
 .swal2-popup .swal2-styled:focus {
-    box-shadow: none !important;
+box-shadow: none !important;
 }

@@ -1,57 +1,82 @@
 .profilMainContainer{
-  width: 100vw;
-  height: 80vh;
+width: 100vw;
+height: 100vh;
+background-image: url('../photos/background.jpg');
 }
-.mainProfilOfficesContainer{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-}
-.profilOfficeItem{
-  border:black solid 2px;
-  width:200px; 
-  border-radius: 20px; 
-}
+.reservationTitle, .officesTitle{
+font-size: 24px;
+color:#4F463Dff;
+border:1px solid #803C24ff;
+background-color: rgba(228, 215, 206,0.7);
+text-align: center;
 
-.profilImageOffice{
-    width:150px;
 }
 .mainReservationContainer{
-border:rgb(164, 18, 18) solid 2px;
-width: 100vw;
+background-color: rgba(79, 70, 61,0.7);
+width:100vw;
 height:35%;
 overflow:auto;
 display:flex;
 }
+.mainProfilOfficesContainer{
+position: absolute;
+bottom:0;
+height:22%;
+}
+.profilOfficesContainer{
+background-color: rgba(79, 70, 61,0.7);
+width:100vw;
+overflow:auto;
+display:flex;
+  
+}
 .reservationContainer{
 border-radius: 10px;
-border:rgb(0, 0, 0) solid 2px;
-margin:20px;
-padding:20px;
-background-color: rgba(228, 215, 206,0.5);
+border:rgb(65, 79, 61) solid 1px;
+margin:30px;
+padding:10px;
+background-color: rgba(228, 215, 206,0.6);
 font-size: 20px;
 display: flex;
 }
+
+.profilOfficeItem{
+border:#4F463Dff solid 1px;
+margin:30px;
+padding:10px;
+width:120px;
+background-color: rgba(228, 215, 206,0.6);
+border-radius: 20px; 
+}
+
+.profilImageOffice{
+width:80px;
+height: 80px;
+}
 .containerTextInfo{
 width:200px;
-
+}
+.profilOfficeText{
+font-size: 20px;
+font-weight: bold;
 }
 .deleteButReservation{
-  border: none;
-  margin:10px;
-  background:none;
+border: none;
+margin:10px;
+background:none;
 }
-.deleteButReservation:{
-
+.deleteButReservation:hover{
+transform: scale(1.5);
 }
 .reservationDates{
-  color:#B45931ff;
+color:#B45931ff;
 }
 .swal2-popup {
-  font-size: 20px;
-  background: #4F463Dff !important;
-  color: #E4D7CEff!important;
-  width:1000px;
-  }
-  .swal2-popup .swal2-styled:focus {
-  box-shadow: none !important;
-  }
+font-size: 20px;
+background: #4F463Dff !important;
+color: #E4D7CEff!important;
+width:1000px;
+}
+.swal2-popup .swal2-styled:focus {
+box-shadow: none !important;
+}

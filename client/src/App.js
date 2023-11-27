@@ -14,6 +14,7 @@ import Profil from './components/Profil';
 import About from './components/About';
 import Terms from './components/Terms';
 import Contact from './components/Contact';
+import StripeContainer from "./components/StripeContainer";
 import ("./app.css");
 
 function App() {
@@ -73,7 +74,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/terms" element={<Terms />} />
-        <Route path="/CONTACT" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/payment" element={<StripeContainer/>} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profil" element={<Profil 

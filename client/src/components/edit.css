@@ -1,0 +1,65 @@
+.editMainContainer{
+    background-color: #E4D7CEff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius:10px;
+    width:500px;
+    height: 500px;
+    z-index: 2;
+    position: absolute;
+    top:250px;
+    left:700px;
+    box-shadow: 10px 10px 10px 1000px rgba(141, 131, 134, 0.8);
+    }
+    .editPhotoInputContainer{
+    display: flex;
+    justify-content: space-between;
+    }
+    .editInput, .editPhotoInputContainer{
+    padding: 10px;
+    margin:10px 10px;
+    border: 1px solid #47362Dff;
+    border-radius: 10px;
+    width:80%;
+    padding: 15px;
+    font-size: 20px;
+    background:#E4D7CEff;
+    }
+
+    .editButton {
+    margin:20px;
+    padding:10px;
+    border-radius:10px;
+    background-color: #E4D7CEff;
+    color:#4F463Dff;
+    font-size: 20px;
+    }
+    .editUploadBut{
+        padding:3px;
+        background-color:#E4D7CEff;
+        border: 1px solid #47362Dff;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+    
+    .bookBut:hover{
+    background-color: #4F463Dff;
+    color:#E4D7CEff;
+    }
+    .editButton:hover{
+    background-color: #803C24ff;
+    color:#E4D7CEff;
+    }
+    .custom-calendar{
+    background-color: #E4D7CEff;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 3px 10px;
+    transform: translateX(150px);
+    box-shadow: 0 0 2px #E4D7CEff;
+    }
+    .custom-input:focus {
+    outline: none;
+    }

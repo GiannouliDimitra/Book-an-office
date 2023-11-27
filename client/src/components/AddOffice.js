@@ -50,7 +50,6 @@ const navigate = useNavigate();
      getLocationByCity(e);
       console.log( "from input event handler" ,e.target.value)
       handleInputChange(e, "place");
-  
   };
 
 //axios post

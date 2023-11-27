@@ -9,6 +9,8 @@ import 'material-icons/iconfont/material-icons.css';
 import Edit from './Edit';
 
 import "./officeItem.css";
+import { StringFormat } from "firebase/storage";
+import StripeContainer from "./StripeContainer";
 
 function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 
@@ -16,6 +18,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   const [id, setId] = useState(1);
   const [isEdit, setIsEdit] = useState(false);
   const [bookPressed, setBookPressed] = useState (false);
+  const [isBooked, setIsBooked] = useState(false);
   const [ownerOfficesIds, setOwnerOfficesIds] = useState ([]);
   const [values, setValues] = useState([]);
   const [reservation, setReservation] = useState ({
@@ -82,7 +85,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
       let date = new Date (office.availableDates[i])
       console.log("the date", date)
     }
-  }
+  };
 
   //handler functions
 
@@ -119,7 +122,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
           })
           .catch((error) => console.log(error));
           setBookPressed(false)
-          navigate('/profil')
+          setIsBooked(true)
     } catch (error) {
       console.log(error);
     }
@@ -152,13 +155,18 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
           </div> 
           )}
       </div>
- {isEdit && <Edit
- office = {office}
- setIsEdit = {setIsEdit}
- getAllOffices = {getAllOffices}
- />
- }
- </>
+        {isEdit && <Edit
+        office = {office}
+        setIsEdit = {setIsEdit}
+        getAllOffices = {getAllOffices}
+        />
+        }
+        {isBooked && <StripeContainer
+        office = {office}
+       reservation = {reservation}
+        />
+        }
+      </>
         ) : (
           <div className="bookMainContainer">
             <img className="itemImage item bookedImage" src={office.photo}/>
@@ -167,7 +175,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
             <h4 className="item bookedOwner">Owners info: <span className="ownerEmail">{office.owner.email}</span></h4>
             <h4 className="item bookedDates">The available dates are: <br/>{(office.availableDates).map((date) => (
               (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'})
-              .format(date)) + " " ) )} </h4>
+              .format(date)) + " _ " ) )} </h4>
             <DatePicker 
               className="custom-calendar bg-brown"
               inputClass="custom-input"
@@ -175,6 +183,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
               value={office.availableDates} 
               onChange={(e) => handleBookInputChange(e)}
             />
+            <h3>Total price: {reservation.totalPrice} €</h3>
             <div className="bookButtons">
             <button className="item bookBut" onClick={addReservation}>Book the office</button>
              <button className="item bookButCancel" onClick={() => setBookPressed(false)}>Cancel</button>

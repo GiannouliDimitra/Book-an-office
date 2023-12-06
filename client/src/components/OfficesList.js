@@ -12,6 +12,7 @@ function OfficesList ({ office, offices, setOffice, getAllOffices }) {
         return office.place.toLowerCase().includes(searchTerm.toLowerCase());
       });
 
+
     return ( 
       <div  className='listMainContainer'>
         <input

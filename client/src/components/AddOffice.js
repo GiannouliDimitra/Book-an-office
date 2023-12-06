@@ -63,6 +63,8 @@ const navigate = useNavigate();
           })
           .then(() => {
             getAllOffices()
+          })
+          .then(()=> {
             navigate('/offices')
           })
           .catch((error) => console.log(error));

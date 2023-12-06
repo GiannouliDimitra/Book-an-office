@@ -10,7 +10,6 @@ import Edit from './Edit';
 
 import "./officeItem.css";
 import { StringFormat } from "firebase/storage";
-import StripeContainer from "./StripeContainer";
 
 function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 
@@ -18,7 +17,6 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   const [id, setId] = useState(1);
   const [isEdit, setIsEdit] = useState(false);
   const [bookPressed, setBookPressed] = useState (false);
-  const [isBooked, setIsBooked] = useState(false);
   const [ownerOfficesIds, setOwnerOfficesIds] = useState ([]);
   const [values, setValues] = useState([]);
   const [reservation, setReservation] = useState ({
@@ -122,7 +120,6 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
           })
           .catch((error) => console.log(error));
           setBookPressed(false)
-          setIsBooked(true)
     } catch (error) {
       console.log(error);
     }
@@ -161,11 +158,6 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
         getAllOffices = {getAllOffices}
         />
         }
-        {isBooked && <StripeContainer
-        office = {office}
-       reservation = {reservation}
-        />
-        }
       </>
         ) : (
           <div className="bookMainContainer">
@@ -173,9 +165,9 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
             <h3 className="item bookedPlace">{office.place}</h3>
             <h4 className="item bookedPrice">Cost: {office.price} euro/day</h4>
             <h4 className="item bookedOwner">Owners info: <span className="ownerEmail">{office.owner.email}</span></h4>
-            <h4 className="item bookedDates">The available dates are: <br/>{(office.availableDates).map((date) => (
+            <h4 className="item bookedDates">Choose from the available dates: {/* <br/>{(office.availableDates).map((date) => (
               (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'})
-              .format(date)) + " _ " ) )} </h4>
+              .format(date)) + " _ " ) )}  */}</h4>
             <DatePicker 
               className="custom-calendar bg-brown"
               inputClass="custom-input"

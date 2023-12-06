@@ -14,7 +14,8 @@ import Profil from './components/Profil';
 import About from './components/About';
 import Terms from './components/Terms';
 import Contact from './components/Contact';
-import StripeContainer from "./components/StripeContainer";
+import Success from './components/Success';
+import Cancel from './components/Cancel';
 import ("./app.css");
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
       console.log(error);
     }
   };
+  
   useEffect(() => {
     getAllOffices();
   }, []);
@@ -75,7 +77,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/payment" element={<StripeContainer/>} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profil" element={<Profil 

@@ -1,0 +1,24 @@
+.successMainContainer{
+width: 100vw;
+height: 100vh;
+background-image: url("../photos/background.jpg");
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+}
+.successTitle{
+    text-align: center;
+    
+}
+.successBut{
+    width:200px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #E4D7CEff;
+border: 1px solid #47362Dff;  
+}
+.successBut:hover{
+    background-color: #47362Dff;
+    color:#E4D7CEff ;
+}

@@ -31,7 +31,6 @@ function getAllReservations(){
     getAllReservations();
   }, []);
 
-console.log ("office and offices ",  offices)
 
 async function deleteReservation(id) {
   console.log(id)
@@ -52,7 +51,7 @@ async function deleteReservation(id) {
         })
        
       } catch (error) {
-        console.log("delete item", error);
+        console.log(error);
       }
       Swal.fire({
         title: "Deleted!",
@@ -62,45 +61,74 @@ async function deleteReservation(id) {
     }
   });
 };
+
+
+function checkout (totalPrice, id)  {
+  fetch(`http://localhost:8000/create-checkout`, {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    mode:"cors",
+    body: JSON.stringify({
+      items: [
+        { id:id, amount:totalPrice }
+      ]
+    })
+  })
+  .then(res => {
+  if(res.ok) return res.json() 
+  return res.json().then(json => Promise.reject(json))
+  })
+  .then(({url}) => {
+    window.location = url
+  })
+  .catch (error => {
+    console.log(error)
+  })
+
+}
     return ( 
       <div>      
       <div className='profilMainContainer'>
-        <div>
-            <h2 className='reservationTitle'>Your reservations</h2>
-<div className='mainReservationContainer'>
-{reservations
-    .filter( (reservation) => reservation.userId === decoded.id).map ((user,i) => (
-              <div
-              className='reservationContainer'
-              key= {i}>
-                <div className='containerTextInfo'>
-               <h4>You will be in <span>{user.officePlace}</span></h4>
-              <h4> the following days:<br/><span className="reservationDates">{(user.dates).map((date) => (
-                (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + " _ ") )}</span></h4>
-                </div>
-                <button 
-                className="deleteButReservation" 
-                title="delete the item" 
-                onClick={() =>deleteReservation(user._id)}><i className="material-icons delete_foreverIcon">delete_forever</i></button>
-                </div>
-            ))}</div>
-        </div>
-        <div className='mainProfilOfficesContainer'>
+          <div className='profilItem'>
+              <h2 className='reservationTitle'>Your reservations</h2>
+              <div className='mainReservationContainer'>
+              {reservations
+              .filter( (reservation) => reservation.userId === decoded.id).map ((user,i) => (
+                 <div
+                  className='reservationContainer'
+                  key= {i}>
+                  <div className='containerTextInfo'>
+                  <h4>You will be in <span>{user.officePlace}</span></h4>
+                  <h4> the following days:<br/><span className="reservationDates">{(user.dates).map((date) => (
+                  (new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(date)) + " _ ") )}</span></h4>
+                  </div>
+                  <button 
+                  className="deleteButReservation" 
+                  title="delete the item" 
+                  onClick={() =>deleteReservation(user._id)}><i className="material-icons delete_foreverIcon">delete_forever</i></button>
+                   <button 
+                  className="payBut" 
+                  onClick={() =>checkout(user.totalPrice, user._id)}>Pay</button>
+                
+                  </div>
+                  
+                  ))}</div>
+              </div>
+          <div className='mainProfilOfficesContainer'>
             <h2 className='officesTitle'>Your offices</h2>
-        <div  className='profilOfficesContainer'>
-{offices
-    .filter( (office) => office.owner._id === decoded.id).map ((office,i) => (
-              <div
-              key= {i}>
-               <div className='profilOfficeItem'> 
-                  <img className='profilImageOffice' src ={office.photo}></img>
-                  <div>
+            <div  className='profilOfficesContainer'>
+              {offices
+               .filter( (office) => office.owner._id === decoded.id).map ((office,i) => (
+                  <div
+                     key= {i}>
+                    <div className='profilOfficeItem'> 
+                    <img className='profilImageOffice' src ={office.photo}></img>
+                    <div>
                     <span className="profilOfficeText">{office.place}</span> 
                     </div>
                   </div>
-                <div>
-              
-               </div>
                 </div>  
             ))}</div>
             </div>

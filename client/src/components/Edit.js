@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { storage } from "./firebase";
 import DatePicker from "react-multi-date-picker";
 import "react-multi-date-picker/styles/backgrounds/bg-brown.css";
@@ -58,16 +58,18 @@ setLanguage("en");
       return
       } else {
           const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-          uploadBytes(imageRef, imageUpload).then(() =>{
+          uploadBytes(imageRef, imageUpload).then(() => {
           getDownloadURL(imageRef).then((url) => {
           setUpdatedValue({...updatedValue, photo:url})
           }) 
       });
       Swal.fire({ text:"The image is uploaded.",
       confirmButtonColor:"#B45931ff"});
+      
       }
-  }
+  };
 
+  
     // Get latitude & longitude from address.
     function getLocationByCity (city) {
       console.log("this is the city" , city.target.value)
@@ -80,8 +82,7 @@ setLanguage("en");
       .catch(console.error);
   };
 
-  function saveChanges() {
-    console.log(office._id)
+const saveChanges = () => {
     try {
       axios
         .put(`http://localhost:8000/${office._id}`, {
@@ -101,6 +102,7 @@ setLanguage("en");
     Swal.fire({ text:"The item is updated.",
     confirmButtonColor:"#B45931ff"});
   };
+
 
   return (
     <div className='editMainContainer'>

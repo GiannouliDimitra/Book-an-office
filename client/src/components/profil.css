@@ -2,33 +2,41 @@
 width: 100vw;
 height: 100vh;
 background-image: url('../photos/background.jpg');
+display:flex;
+justify-content: space-around;
+align-items: center;
 }
 .reservationTitle, .officesTitle{
-font-size: 24px;
+font-size: 28px;
 color:#4F463Dff;
-border:1px solid #803C24ff;
-background-color: rgba(228, 215, 206,0.7);
+background-color: rgba(228, 215, 206,0.9);
 text-align: center;
+margin:10px;
+padding:8px;
 
 }
 .mainReservationContainer{
-background-color: rgba(79, 70, 61,0.7);
-width:100vw;
+background-color: rgba(79, 70, 61,0.8);
+border-radius: 10px;
+width:35vw;
 height:35%;
 overflow:auto;
-display:flex;
+margin:10px;
+
 }
 .mainProfilOfficesContainer{
-position: absolute;
-bottom:0;
-height:22%;
+width:35vw;
+height:35%;
+overflow:auto; 
+margin:10px; 
+border-radius:10px; 
 }
 .profilOfficesContainer{
-background-color: rgba(79, 70, 61,0.7);
-width:100vw;
+background-color: rgba(79, 70, 61,0.8);
+border-radius:10px; 
+width:35vw;
 overflow:auto;
 display:flex;
-  
 }
 .reservationContainer{
 border-radius: 10px;
@@ -39,7 +47,6 @@ background-color: rgba(228, 215, 206,0.6);
 font-size: 20px;
 display: flex;
 }
-
 .profilOfficeItem{
 border:#4F463Dff solid 1px;
 margin:30px;
@@ -54,7 +61,7 @@ width:80px;
 height: 80px;
 }
 .containerTextInfo{
-width:200px;
+width:420px;
 }
 .profilOfficeText{
 font-size: 20px;
@@ -79,4 +86,16 @@ width:1000px;
 }
 .swal2-popup .swal2-styled:focus {
 box-shadow: none !important;
+}
+.payBut{
+    width:70px;
+    font-size: 16px;
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    margin:10px 0;
+}
+.payBut:hover{
+    background: #4F463Dff;
+    color: #E4D7CEff; 
 }

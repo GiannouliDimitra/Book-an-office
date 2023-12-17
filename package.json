@@ -1,0 +1,15 @@
+{
+  "name": "book-an-office",
+  "version": "1.0.0",
+  "description": "Book an office is an application that users can rent the **office that have in their home and also book an office all over the world.",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node server.js",
+    "install-frontend": "cd frontend && npm install",
+    "build-frontend": "cd frontend && npm run build",
+    "start-frontend": "cd frontend && npm run start"
+  },
+  "author": "",
+  "license": "ISC"
+}

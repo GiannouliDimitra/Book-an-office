@@ -81,7 +81,7 @@ height:50px;
 .closedEye{
 position:relative;
 top:-170px;
-left:240px;
+left:200px;
 background-color: transparent;
 background-size: cover;
 border: none;
@@ -89,7 +89,7 @@ border: none;
 .openEye{
 position:relative;
 top:-170px;
-left:240px;
+left:200px;
 background-color: transparent;
 background-size: cover;
 border: none;

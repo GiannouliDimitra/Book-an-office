@@ -17,7 +17,7 @@ function SignUp () {
 
     async function handleSignUp(e) {
      e.preventDefault();
-     let res = await axios.post("http://localhost:8000/signUp", {
+     let res = await axios.post("https://bookanoffice.onrender.com/signUp", {
        name, email, password,
      });
      Swal.fire({text: res.data.msg,

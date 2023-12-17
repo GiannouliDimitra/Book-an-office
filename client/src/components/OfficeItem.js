@@ -113,7 +113,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
   const  addReservation = ( ) => {
     try {
       axios
-          .post("http://localhost:8000/reservation", reservation )
+          .post("https://bookanoffice.onrender.com/reservation", reservation )
           .then((res) => {
             Swal.fire({ text: decoded.name + " your reservation in " + reservation.officePlace + " is added.",
             confirmButtonColor:"#B45931ff"})

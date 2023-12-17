@@ -36,7 +36,7 @@ function App() {
   function getAllOffices(){
     try {
       axios
-      .get("http://localhost:8000/offices")
+      .get("https://bookanoffice.onrender.com/offices")
       .then((res) => {
       setOffices(res.data);
         console.log (`getAllOffices`, offices)

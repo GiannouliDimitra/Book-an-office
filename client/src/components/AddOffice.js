@@ -56,7 +56,7 @@ const navigate = useNavigate();
   const addOffice = () => {
     try {
       axios
-          .post("http://localhost:8000/create", office, { headers:{ Authorization: `Bearer ${token}`} })
+          .post("https://bookanoffice.onrender.com/create", office, { headers:{ Authorization: `Bearer ${token}`} })
           .then((res) => {
             Swal.fire({ text:"The office " + res.data.createdOffice.place + " is added.",
                         confirmButtonColor:"#B45931ff" })

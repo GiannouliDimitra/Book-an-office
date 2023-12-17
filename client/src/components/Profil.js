@@ -17,7 +17,7 @@ const [reservations, setReservations] = useState([]);
 function getAllReservations(){
     try {
       axios
-      .get("http://localhost:8000/reservations")
+      .get("https://bookanoffice.onrender.com/reservations")
       .then((res) => {
         setReservations(res.data);
         console.log (`getAllreservations`, reservations)
@@ -45,7 +45,7 @@ async function deleteReservation(id) {
   }).then((result) => {
     if (result.isConfirmed) { 
       try {
-        axios.delete(`http://localhost:8000/reservation/${id}`)
+        axios.delete(`https://bookanoffice.onrender.com/reservation/${id}`)
         .then(() => {
            getAllReservations();
         })
@@ -64,7 +64,7 @@ async function deleteReservation(id) {
 
 
 function checkout (totalPrice, id)  {
-  fetch(`http://localhost:8000/create-checkout`, {
+  fetch(`https://bookanoffice.onrender.com/create-checkout`, {
     method:"POST",
     headers:{
       "Content-Type":"application/json"

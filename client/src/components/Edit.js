@@ -85,7 +85,7 @@ setLanguage("en");
 const saveChanges = () => {
     try {
       axios
-        .put(`http://localhost:8000/${office._id}`, {
+        .put(`https://bookanoffice.onrender.com/${office._id}`, {
           location: updatedValue.location,
           place: updatedValue.place,
           photo: updatedValue.photo,

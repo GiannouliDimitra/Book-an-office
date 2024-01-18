@@ -53,27 +53,31 @@ const navigate = useNavigate();
   };
 
 //axios post
-  const addOffice = () => {
-    uploadImage();
-    console.log(office)
-    try {
-      axios
-          .post("https://bookanoffice.onrender.com/create", office, { headers:{ Authorization: `Bearer ${token}`} })
-          .then((res) => {
-            Swal.fire({ text:"The office " + res.data.createdOffice.place + " is added.",
-                        confirmButtonColor:"#B45931ff" })
-          })
-          .then(() => {
-            getAllOffices()
-          })
-          .then(()=> {
-            navigate('/offices')
-          })
-          .catch((error) => console.log(error));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const addOffice = async () => {
+  await uploadImage(); // Wait for image upload to complete
+  console.log("from addoffice",office);
+  try {
+    axios
+      .post("https://bookanoffice.onrender.com/create", office, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        Swal.fire({
+          text: "The office " + res.data.createdOffice.place + " is added.",
+          confirmButtonColor: "#B45931ff",
+        });
+      })
+      .then(() => {
+        getAllOffices();
+      })
+      .then(() => {
+        navigate("/offices");
+      })
+      .catch((error) => console.log(error));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
     //availability
     function findAvailabledays(days) {
@@ -85,18 +89,16 @@ const navigate = useNavigate();
     }
 
 //upload the image with firebase
-   const uploadImage = () => {
-      if(imageUpload == null) {
-        return
-        } else {
-            const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-            uploadBytes(imageRef, imageUpload).then(() =>{
-            getDownloadURL(imageRef).then((url) => {
-            setOffice({...office, photo:url})
-            }) 
-        });
-      }
-    }
+const uploadImage = async () => {
+  if (imageUpload == null) {
+    return;
+  } else {
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    await uploadBytes(imageRef, imageUpload);
+    const url = await getDownloadURL(imageRef);
+    setOffice({ ...office, photo: url });
+  }
+};
   return ( 
     <div>    
       <div className="addFormMainContainer">

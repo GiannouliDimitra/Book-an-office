@@ -36,6 +36,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
     .filter( (office) => office.owner._id === decoded.id)
     .map( (office) => office._id);
     setOwnerOfficesIds(ownerOfficesIds);
+    console.log("the offices", offices)
   }
 
   useEffect(( )=> {filter()} , [decoded.id]);

@@ -7,9 +7,8 @@ import "react-multi-date-picker/styles/backgrounds/bg-brown.css";
 import Swal from 'sweetalert2';
 import 'material-icons/iconfont/material-icons.css';
 import Edit from './Edit';
-
 import "./officeItem.css";
-import { StringFormat } from "firebase/storage";
+
 
 function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
 
@@ -54,7 +53,7 @@ function OfficeItem ( { office, offices, getAllOffices, setOffice }) {
     }).then((result) => {
       if (result.isConfirmed) { 
         try {
-          axios.delete(`http://localhost:8000/${id}`)
+          axios.delete(`https://bookanoffice.onrender.com/${id}`)
           .then(() => {
              getAllOffices();
           })

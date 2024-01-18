@@ -12,7 +12,7 @@ import 'material-icons/iconfont/material-icons.css';
 import Calendar from "./Calendar";
 import ("./addOffice.css");
 
-function AddOffice ( { getAllOffices, office, setOffice }) {
+function AddOffice ( { getAllOffices, office, offices, setOffice }) {
 
 //states
 const [imageUpload, setImageUpload] = useState(null);
@@ -54,6 +54,8 @@ const navigate = useNavigate();
 
 //axios post
   const addOffice = () => {
+    uploadImage();
+    console.log(office)
     try {
       axios
           .post("https://bookanoffice.onrender.com/create", office, { headers:{ Authorization: `Bearer ${token}`} })
@@ -93,9 +95,7 @@ const navigate = useNavigate();
             setOffice({...office, photo:url})
             }) 
         });
-        Swal.fire({ text:"The image is uploaded.",
-        confirmButtonColor:"#B45931ff"});
-        }
+      }
     }
   return ( 
     <div>    
@@ -115,7 +115,7 @@ const navigate = useNavigate();
               placeholder="Add a photo..."
               onChange={(e) => setImageUpload(e.target.files[0])}
               />
-              <button  className='uploadBut' onClick={uploadImage}>Upload</button>
+
           </div>   
             <input
             className='addPriceInput'

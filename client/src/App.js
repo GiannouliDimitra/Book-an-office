@@ -38,7 +38,7 @@ function App() {
       axios
       .get("https://bookanoffice.onrender.com/offices")
       .then((res) => {
-      setOffices(res.data);
+        setOffices(res.data);
         console.log (`getAllOffices`, offices)
       })
     } catch (error) {
@@ -58,6 +58,7 @@ function App() {
           path="/addForm"
           element={<AddOffice
             office ={office}
+            offices = {offices}
             setOffice={setOffice}
             getAllOffices = {getAllOffices}
             />}
